@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{%  block content %}
+
+<!-- SHOWCASE SLIDER -->
+<section id="showcase">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item carousel-image-1 active">
+                <div class="container">
+                    <div class="carousel-caption d-none d-sm-block text-right mb-5">
+                        <h1 class="display-3">The Alps</h1>
+                        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, aperiam vel ullam deleniti
+                            </p>
+                        <a href="#" class="btn btn-danger btn-lg">Special offer!</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item carousel-image-2">
+                <div class="container">
+                    <div class="carousel-caption d-none d-sm-block text-right mb-5">
+                        <h1 class="display-3">Brazil</h1>
+                        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, aperiam vel ullam deleniti
+                           </p>
+                        <a href="#" class="btn btn-primary btn-lg">Book it now!</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item carousel-image-3">
+                <div class="container">
+                    <div class="carousel-caption d-none d-sm-block text-right mb-5">
+                        <h1 class="display-3">Fuerteventura</h1>
+                        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, aperiam vel ullam deleniti
+                            </p>
+                        <a href="#" class="btn btn-success btn-lg">Best prices!</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item carousel-image-4">
+                <div class="container">
+                    <div class="carousel-caption d-none d-sm-block mb-5">
+                        <h1 class="display-3">Tallinn</h1>
+                        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, aperiam vel ullam deleniti
+                            </p>
+                        <a href="#" class="btn btn-success btn-lg">Last days!</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item carousel-image-5">
+                <div class="container">
+                    <div class="carousel-caption d-none d-sm-block text-right mb-5">
+                        <h1 class="display-3">Costa Rica</h1>
+                        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, aperiam vel ullam deleniti
+                        </p>
+                        <a href="#" class="btn btn-success btn-lg">Book it now!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#myCarousel" data-slide="prev" class="carousel-control-prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+
+        <a href="#myCarousel" data-slide="next" class="carousel-control-next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+</section>
+
+<!-- Aquí el formulario para buscar viajes -->
+
+<section id="search" class="bg-dark text-white py-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                    <form action="#" class="search-property-1">
+                        <div class="row">
+                            <div class="col-lg align-items-end">
+                                <div class="form-group">
+                                    <label for="#">Destination</label>
+                                    <div class="form-field">
+                                        <div class="icon"><span class="ion-ios-search"></span></div>
+                                        <input type="text" class="form-control" placeholder="Search place">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg align-items-end">
+                                <div class="form-group">
+                                    <label for="#">Check-in date</label>
+                                    <div class="form-field">
+                                        <div class="icon"><span class="ion-ios-calendar"></span></div>
+                                        <input type="text" class="form-control checkin_date" placeholder="Check In Date">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg align-items-end">
+                                <div class="form-group">
+                                    <label for="#">Check-out date</label>
+                                    <div class="form-field">
+                                        <div class="icon"><span class="ion-ios-calendar"></span></div>
+                                        <input type="text" class="form-control checkout_date" placeholder="Check Out Date">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg align-items-end">
+                                <div class="form-group">
+                                    <label for="#">Price Limit</label>
+                                    <div class="form-field">
+                                        <div class="select-wrap">
+                                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                            <select name="" id="" class="form-control">
+                                                <option value="">$1,000</option>
+                                                <option value="">$2,000</option>
+                                                <option value="">$3,000</option>
+                                                <option value="">$5,000</option>
+                                                <option value="">$6,000</option>
+                                                <option value="">$8,000</option>
+                                                <option value="">$7,000</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg align-self-end">
+                                <div class="form-group">
+                                    <div class="form-field">
+                                        <input type="submit" value="Search" class="form-control btn btn-primary">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
