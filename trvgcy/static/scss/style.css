@@ -1,0 +1,51 @@
+body {
+  margin-top: 80px;
+}
+
+.navbar {
+  box-shadow: 2px 2px 5px #3292a6;
+  opacity: 0.8;
+  background: #fff;
+}
+
+.navbar .nav-item {
+  font-size: 1.4rem;
+  text-transform: capitalize;
+  padding-right: 1.4rem !important;
+  padding-right: 1.4rem !important;
+}
+
+.navbar .nav-item.active {
+  border-left: #444 3px solid;
+}
+
+.carousel-item {
+  height: 500px;
+}
+
+.carousel-image-1 {
+  background: url("../img/image1.jpg");
+  background-size: cover;
+}
+
+.carousel-image-2 {
+  background: url("../img/image2.jpg");
+  background-size: cover;
+}
+
+.carousel-image-3 {
+  background: url("../img/image3.jpg");
+  background-size: cover;
+}
+
+.carousel-image-4 {
+  background: url("../img/image4.jpg");
+  background-size: cover;
+}
+
+.carousel-image-5 {
+  background: url("../img/image5.jpg");
+  background-size: cover;
+}
+
+/*# sourceMappingURL=style.css.map */
