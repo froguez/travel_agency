@@ -2,65 +2,35 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <!-- META -->
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- FONTAWESOME -->
     <script src="https://kit.fontawesome.com/ffadf9b6fb.js"
             crossorigin="anonymous"></script>
+    <!-- BOOTSTRAP  -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
           crossorigin="anonymous">
+    <!-- STYLE -->
     <link rel="stylesheet" href="{% static "pages/scss/style.css" %}">
+    <!-- TITLE -->
     <title>Bootstrap Theme</title>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md navbar-light fixed-top py-0.5" id="main-nav">
-    <div class="container">
-        <a href="#home" class="navbar-brand">
-            <img src= "{% static "pages/img/logo.png" %}" width="50" height="50" alt="">
-            <h3 class="d-inline align-middle">Python travels</h3>
-        </a>
-        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contactModal" data-toggle="modal" data-target="#contactModal" class="nav-link">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#register" class="nav-link">Register</a>
-                </li>
-            </ul>
-        </div>
-        <!-- LOGIN MODAL TRIGGER -->
-        <button class="btn btn-dark" data-toggle="modal" data-target="#loginModal">Login</button>
+<!-- NAVBAR -->
+{% include 'partials/_Navbar.html' %}
 
-   </div>
-</nav>
-
-{% include 'partials/_loginModal.html' %}
-{% include 'partials/_contactModal.html' %}
-
+<!-- CONTENT -->
 {% block content %} {% endblock %}
 
 <!-- FOOTER -->
- <footer id="main-footer" class="text-center p-4">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <p>Copyright &copy;
-            <span id="year"></span> Python Travels</p>
-        </div>
-      </div>
-    </div>
- </footer>
+{%  include 'partials/_footer.html' %}
 
+<!-- LOAD LIBRARIES -->
 <script
         src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
@@ -71,14 +41,18 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
+
+<!-- SCRIPTS -->
+
 <script>
-    // Get the current year for the copyright
-    $('#year').text(new Date().getFullYear());
 
     $('.carousel').carousel({
-        interval: 6000,
+        interval: 8000,
         pause: 'hover'
     });
+
+    // Get the current year for the copyright
+    $('#year').text(new Date().getFullYear());
 
 </script>
 
