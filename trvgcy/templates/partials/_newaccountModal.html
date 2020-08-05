@@ -9,6 +9,7 @@
             </div>
             <div class = "modal-body">
                 <form method="post" action="#">
+                    {% csrf_token %}
                     <div class="form-group">
                         <label for="firstName">User Name</label>
                         <input class="form-control" type="text" placeholder="First Name" name="firstName">
