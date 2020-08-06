@@ -18,7 +18,6 @@ class Hotel(models.Model):
 # Fields
 
     id = models.AutoField(primary_key=True)
-    addressid = models.ForeignKey(Address, on_delete=models.CASCADE,)
     name = models.CharField(max_length=40, unique=True)
     chain = models.CharField(max_length=30)
     stars = models.CharField(max_length=2)  #'5+'
@@ -26,7 +25,7 @@ class Hotel(models.Model):
     email = models.EmailField(max_length=40)
     telephone = models.CharField(max_length=15)
     is_partner = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=False)
     has_parking = models.BooleanField(default=False)
     has_swimingpool = models.BooleanField(default=False)
     has_gym = models.BooleanField(default=False)
@@ -58,7 +57,6 @@ class Hotel(models.Model):
 class Airport(models.Model):
 
     id = models.AutoField(primary_key=True)
-    addressid = models.ForeignKey(Address, on_delete=models.CASCADE,)
     name = models.CharField(max_length=40)
 
     def __str__(self):
@@ -67,23 +65,43 @@ class Airport(models.Model):
 class Event(models.Model):
 
     id = models.AutoField(primary_key=True)
-    addressid = models.ForeignKey(Address, on_delete=models.CASCADE,)
     name = models.CharField(max_length=40)
     category = models.CharField(max_length=30)
     price = models.DecimalField(max_digits=5, decimal_places=2)
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=False)
+
+def __str__(self):
+    return self.name
 
 class Flight(models.Model):
 
     id = models.AutoField(primary_key = True)
-    origin = models.ForeignKey(Airport, on_delete = models.CASCADE)
-    destiny = models.ForeignKey(Airport, on_delete = models.CASCADE)
     airline = models.CharField(max_length=20)
     numflight = models.CharField(max_length=10)
     takeoff = models.DateTimeField()
     landing = models.DateTimeField()
-    price = models.DecimalField(max_length=5, decimal_places=2)
-    is_active =models.BooleanField(default=True)
+    price = models.DecimalField(max_digits=5, decimal_places=2)
+    is_active =models.BooleanField(default=False)
+
+
+    def __str__(self):
+        return self.numflight
+
+class Trip(models.Model):
+
+    internal_reference = models.CharField(max_length=40)
+    comercial_reference = models.CharField(max_length=40)
+    #designerID = models.ForeignKey()
+    #managerID = models.ForeignKey()
+    include_hotel = models.BooleanField(default=False)
+    include_flight = models.BooleanField(default=False)
+    include_event = models.BooleanField(default=False)
+    basic_price = models.DecimalField(max_digits = 5, decimal_places = 2)
+    stock = models.IntegerField()
+    sold = models.IntegerField()
+    refund = models.IntegerField()
+    cancelled = models.IntegerField()
+    is_active = models.BooleanField(default=False)
 
 
 
