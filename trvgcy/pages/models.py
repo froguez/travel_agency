@@ -10,7 +10,7 @@ class UserAccount(models.Model):
     username = models.CharField(max_length=12, unique=True)
     password = models.CharField(max_length=12)
     email = models.EmailField(max_length=30)
-    active = models.BooleanField(default=None)
+    is_active = models.BooleanField(default=False)
 
 # Metadata
 

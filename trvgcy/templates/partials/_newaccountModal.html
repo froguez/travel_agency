@@ -8,23 +8,27 @@
                 </button>
             </div>
             <div class = "modal-body">
-                <form method="post" action="#">
+                <form
+                    method="post"
+                    oninput='password2.setCustomValidity(password2.value != password.value ?
+                            "Passwords do not match.": "")'
+                    action="#">
                     {% csrf_token %}
                     <div class="form-group">
-                        <label for="firstName">User Name</label>
-                        <input class="form-control" type="text" placeholder="First Name" name="firstName">
+                        <label for="username">Username</label>
+                        <input class="form-control" type="text" placeholder="Username" name="username">
                     </div>
                     <div class="form-group">
-                        <label for="Email">Email ID</label>
-                        <input class="form-control" type="email" placeholder="Enter your email" name="Email">
+                        <label for="email">email ID</label>
+                        <input class="form-control" type="email" placeholder="Enter your email" name="email">
                     </div>
                     <div class="form-group">
-                        <label for="Password">Password</label>
-                        <input class="form-control" type="password" placeholder="Password" name="Password">
+                        <label for="password">Password</label>
+                        <input class="form-control" type="password" placeholder="Password" name="password">
                     </div>
                     <div class="form-group">
-                        <label for="Re-TypePassword">Re-Type Password</label>
-                        <input class="form-control" type="password" placeholder="Re-Type Password" name="Re-TypePassword">
+                        <label for="password2">Re-Type Password</label>
+                        <input class="form-control" type="password" placeholder="Re-Type Password" name="password2">
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary btn-block" type="submit">Create account</button>
