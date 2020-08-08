@@ -11,8 +11,7 @@ class Address(models.Model):
     postalcode = models.CharField(max_length=15)
     street = models.CharField(max_length=40)
     num = models.CharField(max_length=15)
-    coordinates = models.CharField(max_length=15)
-
+    coordinates = models.CharField(max_length=15, blank=True)
 
 class Hotel(models.Model):
     # Fields
@@ -21,7 +20,7 @@ class Hotel(models.Model):
     name = models.CharField(max_length=40, unique=True)
     chain = models.CharField(max_length=30)
     stars = models.CharField(max_length=2)  # '5+'
-    category = models.CharField(max_length=30)
+    category = models.CharField(max_length=30, blank = True)
     email = models.EmailField(max_length=40)
     telephone = models.CharField(max_length=15)
     is_partner = models.BooleanField(default=False)
@@ -39,18 +38,16 @@ class Hotel(models.Model):
     has_half_board = models.BooleanField(default=False)
     has_full_board = models.BooleanField(default=False)
     has_only_breakfast = models.BooleanField(default=False)
-    allow_pet = models.BooleanField(default=True)
-    rating = models.CharField(max_length=2)  # '10'
-    rating_business = models.CharField(max_length=2)  # '10'
-    rating_family = models.CharField(max_length=2)  # '10'
-    rating_single = models.CharField(max_length=2)  # '10'
-    rating_couples = models.CharField(max_length=2)  # '10'
-    rating_pet = models.CharField(max_length=2)  # '10'
+    allow_pet = models.BooleanField(default=False)
+    rating = models.CharField(max_length=2, blank = True)  # '10'
+    rating_business = models.CharField(max_length=2, blank = True)  # '10'
+    rating_family = models.CharField(max_length=2, blank = True)  # '10'
+    rating_single = models.CharField(max_length=2, blank = True)  # '10'
+    rating_couples = models.CharField(max_length=2, blank = True)  # '10'
+    rating_pet = models.CharField(max_length=2, blank = True)  # '10'
     photo_main = models.ImageField(upload_to='photos/Hotels/%Y/%m/%d/', null=True)
     photo1 = models.ImageField(upload_to='photos/Hotels/%Y/%m/%d/', null=True)
     photo2 = models.ImageField(upload_to='photos/Hotels/%Y/%m/%d/', null=True)
-    photo3 = models.ImageField(upload_to='photos/Hotels/%Y/%m/%d/', null=True)
-    photo4 = models.ImageField(upload_to='photos/Hotels/%Y/%m/%d/', null=True)
 
     # Metadata
 
@@ -59,14 +56,12 @@ class Hotel(models.Model):
     def __str__(self):
         return self.name
 
-
 class Airport(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=40)
 
     def __str__(self):
         return self.name
-
 
 class Event(models.Model):
     id = models.AutoField(primary_key=True)
@@ -77,13 +72,9 @@ class Event(models.Model):
     photo_main = models.ImageField(upload_to='photos/Events/%Y/%m/%d/', null=True)
     photo1 = models.ImageField(upload_to='photos/Events/%Y/%m/%d/', null=True)
     photo2 = models.ImageField(upload_to='photos/Events/%Y/%m/%d/', null=True)
-    photo3 = models.ImageField(upload_to='photos/Events/%Y/%m/%d/', null=True)
-    photo4 = models.ImageField(upload_to='photos/Events/%Y/%m/%d/', null=True)
-
 
 def __str__(self):
     return self.name
-
 
 class Flight(models.Model):
     id = models.AutoField(primary_key=True)
@@ -113,7 +104,3 @@ class Trip(models.Model):
     cancelled = models.IntegerField()
     is_active = models.BooleanField(default=False)
     photo_main = models.ImageField(upload_to='photos/Trips/%Y/%m/%d/photo_main', null=True)
-    photo1 = models.ImageField(upload_to='photos/Trips/%Y/%m/%d/photo1', null=True)
-    photo2 = models.ImageField(upload_to='photos/Trips/%Y/%m/%d/photo2', null=True)
-    photo3 = models.ImageField(upload_to='photos/Trips/%Y/%m/%d/', null=True)
-    photo4 = models.ImageField(upload_to='photos/Trips/%Y/%m/%d/', null=True)
