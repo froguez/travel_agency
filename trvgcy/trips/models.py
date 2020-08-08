@@ -3,15 +3,6 @@ from django.db import models
 
 # Create your models here.
 
-class Address(models.Model):
-    id = models.AutoField(primary_key=True)
-    continent = models.CharField(max_length=15)
-    country = models.CharField(max_length=15)
-    city = models.CharField(max_length=15)
-    postalcode = models.CharField(max_length=15)
-    street = models.CharField(max_length=40)
-    num = models.CharField(max_length=15)
-    coordinates = models.CharField(max_length=15, blank=True)
 
 class Hotel(models.Model):
     # Fields
@@ -25,6 +16,13 @@ class Hotel(models.Model):
     telephone = models.CharField(max_length=15)
     is_partner = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
+    continent = models.CharField(max_length=15, default = False)
+    country = models.CharField(max_length=15, default = False)
+    city = models.CharField(max_length=30, default = False)
+    postalcode = models.CharField(max_length=15, default = '00000')
+    street = models.CharField(max_length=40, default = '00000')
+    num = models.CharField(max_length=15, default = '00000')
+    coordinates = models.CharField(max_length=15, blank=True)
     has_parking = models.BooleanField(default=False)
     has_swimingpool = models.BooleanField(default=False)
     has_gym = models.BooleanField(default=False)
@@ -59,9 +57,33 @@ class Hotel(models.Model):
 class Airport(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=40)
+    continent = models.CharField(max_length=15, default = False)
+    country = models.CharField(max_length=15, default = False)
+    city = models.CharField(max_length=30, default = False)
+    postalcode = models.CharField(max_length=15, default = '00000')
+    street = models.CharField(max_length=40, default = '00000')
+    num = models.CharField(max_length=15, default = '00000')
+    coordinates = models.CharField(max_length=15, blank=True)
+
 
     def __str__(self):
         return self.name
+
+class Flight(models.Model):
+    id = models.AutoField(primary_key=True)
+    origin = models.ForeignKey(Airport, on_delete = models.CASCADE, default = False)
+    destination = models.ForeignKey(Airport, related_name='+', on_delete = models.CASCADE, default = False)
+    flightnum = models.CharField(max_length=10, default=None)
+    airline = models.CharField(max_length=18)
+    takeoff = models.DateTimeField()
+    landing = models.DateTimeField()
+    price = models.DecimalField(max_digits=5, decimal_places=2, default = False)
+    is_active = models.BooleanField(default=False)
+
+
+    def __str__(self):
+        return self.flightnum
+
 
 class Event(models.Model):
     id = models.AutoField(primary_key=True)
@@ -69,24 +91,19 @@ class Event(models.Model):
     category = models.CharField(max_length=30)
     price = models.DecimalField(max_digits=5, decimal_places=2)
     is_active = models.BooleanField(default=False)
+    continent = models.CharField(max_length=15, default = False)
+    country = models.CharField(max_length=15, default = False)
+    city = models.CharField(max_length=30, default = False)
+    postalcode = models.CharField(max_length=15, default = '00000')
+    street = models.CharField(max_length=40, default = '00000')
+    num = models.CharField(max_length=15, default = '00000')
+    coordinates = models.CharField(max_length=15, blank=True)
     photo_main = models.ImageField(upload_to='photos/Events/%Y/%m/%d/', null=True)
     photo1 = models.ImageField(upload_to='photos/Events/%Y/%m/%d/', null=True)
     photo2 = models.ImageField(upload_to='photos/Events/%Y/%m/%d/', null=True)
 
-def __str__(self):
-    return self.name
-
-class Flight(models.Model):
-    id = models.AutoField(primary_key=True)
-    airline = models.CharField(max_length=20)
-    numflight = models.CharField(max_length=10)
-    takeoff = models.DateTimeField()
-    landing = models.DateTimeField()
-    price = models.DecimalField(max_digits=5, decimal_places=2)
-    is_active = models.BooleanField(default=False)
-
     def __str__(self):
-        return self.numflight
+        return self.name
 
 
 class Trip(models.Model):
@@ -104,3 +121,8 @@ class Trip(models.Model):
     cancelled = models.IntegerField()
     is_active = models.BooleanField(default=False)
     photo_main = models.ImageField(upload_to='photos/Trips/%Y/%m/%d/photo_main', null=True)
+
+
+    def __str__(self):
+        return self.internal_reference
+
