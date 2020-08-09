@@ -86,7 +86,6 @@ class Airport(models.Model):
     num = models.CharField(max_length=15, default = '00000')
     coordinates = models.CharField(max_length=15, blank=True)
 
-
     def __str__(self):
         return self.name
 
@@ -102,10 +101,8 @@ class Flight(models.Model):
     price = models.DecimalField(max_digits=5, decimal_places=2, default = False)
     is_active = models.BooleanField(default=False)
 
-
     def __str__(self):
         return self.flightnum
-
 
 class Event(models.Model):
     id = models.AutoField(primary_key=True)
@@ -127,7 +124,6 @@ class Event(models.Model):
 
     def __str__(self):
         return self.name
-
 
 class TripTemplate(models.Model):
     id = models.AutoField(primary_key=True)
@@ -191,6 +187,32 @@ class HotelTrip(models.Model):
 
     def __str__(self):
         return self.id
+
+class Trip(models.Model):
+
+    TRIP_STATUS = (
+        ('w', 'Wish list'),
+        ('B', 'Basket case'),
+        ('X', 'Charged'),
+        ('C', 'Cancelled'),
+        ('R', 'Refunded'),
+        ('I', 'Inactive')
+    )
+
+    id = models.AutoField(primary_key = True)
+    userID = models.ForeignKey('pages.UserAccount', on_delete=models.CASCADE, default = False)
+    tripTemplateID = models.ForeignKey(TripTemplate, on_delete=models.CASCADE, default = False)
+    eventTripID = models.ForeignKey(EventTrip, on_delete=models.CASCADE, default = False)
+    hotelTripID = models.ForeignKey(Hotel, on_delete=models.CASCADE, default = False)
+    flightTripID = models.ForeignKey(FlightTrip, on_delete=models.CASCADE, default = False)
+    final_price = models.DecimalField(max_digits=7, decimal_places=2)
+    status = models.CharField(max_length=1, choices=TRIP_STATUS, blank=False, default='I')
+
+    def __str__(self):
+        return self.id
+
+
+
 
 
 
