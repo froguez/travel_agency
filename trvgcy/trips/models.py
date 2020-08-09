@@ -24,6 +24,7 @@ class Hotel(models.Model):
     num = models.CharField(max_length=15, default = '00000')
     coordinates = models.CharField(max_length=15, blank=True)
     has_parking = models.BooleanField(default=False)
+    parking_price = models.DecimalField(max_digits=4, decimal_places=2, default = False)
     has_swimingpool = models.BooleanField(default=False)
     has_gym = models.BooleanField(default=False)
     has_spa = models.BooleanField(default=False)
