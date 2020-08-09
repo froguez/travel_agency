@@ -16,6 +16,9 @@ class AirportAdmin(admin.ModelAdmin):
 class EventAdmin(admin.ModelAdmin):
     list_display = ('name','category','continent', 'country', 'city','price')
 
+class RingAdmin(admin.ModelAdmin):
+    list_display = ('id','name','trips_in_stock', 'sold_trips')
+
 # Register your models here.
 
 admin.site.register(Hotel, HotelAdmin)
@@ -23,6 +26,6 @@ admin.site.register(Airport, AirportAdmin)
 admin.site.register(Event, EventAdmin)
 admin.site.register(Flight, FlightAdmin)
 admin.site.register(Trip)
-admin.site.register(Ring)
+admin.site.register(Ring, RingAdmin)
 
 

@@ -7,15 +7,17 @@ class Ring(models.Model):
 
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=40, unique=True, default=False)
+    trips_in_stock = models.IntegerField(default='0')
+    sold_trips = models.IntegerField(default='0')
 
     def __str__(self):
         return self.name
-
 
 class Hotel(models.Model):
     # Fields
 
     id = models.AutoField(primary_key=True)
+    ring = models.ForeignKey(Ring, on_delete=models.CASCADE)
     name = models.CharField(max_length=40, unique=True)
     chain = models.CharField(max_length=30)
     stars = models.CharField(max_length=2)  # '5+'
@@ -36,25 +38,25 @@ class Hotel(models.Model):
     has_swimingpool = models.BooleanField(default=False)
     has_gym = models.BooleanField(default=False)
     has_spa = models.BooleanField(default=False)
-    spa_price = models.DecimalField(max_digits=4, decimal_places=2, default = "00000")
+    spa_price = models.DecimalField(max_digits=4, decimal_places=2, default = False)
     has_kindergarden = models.BooleanField(default=False)
-    kindergarden_price = models.DecimalField(max_digits=4, decimal_places=2, default = "00000")
+    kindergarden_price = models.DecimalField(max_digits=4, decimal_places=2, default = False)
     has_single_room = models.BooleanField(default=False)
-    single_price = models.DecimalField(max_digits=5, decimal_places=2, default = "00000")
+    single_price = models.DecimalField(max_digits=5, decimal_places=2, default = False)
     has_double_room = models.BooleanField(default=False)
-    double_room_price = models.DecimalField(max_digits=5, decimal_places=2, default = "00000")
+    double_room_price = models.DecimalField(max_digits=5, decimal_places=2, default = False)
     has_suite = models.BooleanField(default=False)
-    suite_price = models.DecimalField(max_digits=5, decimal_places=2, default = "00000")
+    suite_price = models.DecimalField(max_digits=5, decimal_places=2, default = False)
     has_cooking_24h = models.BooleanField(default=False)
     has_checkin_24h = models.BooleanField(default=False)
     has_all_inclusive = models.BooleanField(default=False)
-    all_inclusive_price = models.DecimalField(max_digits=5, decimal_places=2, default = "00000")
+    all_inclusive_price = models.DecimalField(max_digits=5, decimal_places=2, default = False)
     has_half_board = models.BooleanField(default=False)
-    half_board_price = models.DecimalField(max_digits=5, decimal_places=2, default = "00000")
+    half_board_price = models.DecimalField(max_digits=5, decimal_places=2, default = False)
     has_full_board = models.BooleanField(default=False)
-    full_board_price = models.DecimalField(max_digits=5, decimal_places=2, default = "00000")
+    full_board_price = models.DecimalField(max_digits=5, decimal_places=2, default = False)
     has_only_breakfast = models.BooleanField(default=False)
-    breakfast_price = models.DecimalField(max_digits=4, decimal_places=2, default = "00000")
+    breakfast_price = models.DecimalField(max_digits=4, decimal_places=2, default = False)
     allow_pet = models.BooleanField(default=False)
     rating = models.CharField(max_length=2, blank = True)  # '10'
     rating_business = models.CharField(max_length=2, blank = True)  # '10'
@@ -92,6 +94,7 @@ class Flight(models.Model):
     id = models.AutoField(primary_key=True)
     origin = models.ForeignKey(Airport, on_delete = models.CASCADE, default = False)
     destination = models.ForeignKey(Airport, related_name='+', on_delete = models.CASCADE, default = False)
+    ring = models.ForeignKey(Ring, on_delete=models.CASCADE, default=False)
     flightnum = models.CharField(max_length=10, default=None)
     airline = models.CharField(max_length=18)
     takeoff = models.DateTimeField()
@@ -106,6 +109,7 @@ class Flight(models.Model):
 
 class Event(models.Model):
     id = models.AutoField(primary_key=True)
+    ring = models.ForeignKey(Ring, on_delete=models.CASCADE, default= False)
     name = models.CharField(max_length=40)
     category = models.CharField(max_length=30)
     price = models.DecimalField(max_digits=5, decimal_places=2)
@@ -128,6 +132,7 @@ class Event(models.Model):
 class Trip(models.Model):
     internal_reference = models.CharField(max_length=40)
     comercial_reference = models.CharField(max_length=40)
+    ring = models.ForeignKey(Ring, on_delete=models.CASCADE, default= False)
     # designerID = models.ForeignKey()
     # managerID = models.ForeignKey()
     include_hotel = models.BooleanField(default=False)
