@@ -3,6 +3,14 @@ from django.db import models
 
 # Create your models here.
 
+class Ring(models.Model):
+
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=40, unique=True, default=False)
+
+    def __str__(self):
+        return self.name
+
 
 class Hotel(models.Model):
     # Fields
@@ -28,15 +36,25 @@ class Hotel(models.Model):
     has_swimingpool = models.BooleanField(default=False)
     has_gym = models.BooleanField(default=False)
     has_spa = models.BooleanField(default=False)
+    spa_price = models.DecimalField(max_digits=4, decimal_places=2, default = "00000")
     has_kindergarden = models.BooleanField(default=False)
+    kindergarden_price = models.DecimalField(max_digits=4, decimal_places=2, default = "00000")
     has_single_room = models.BooleanField(default=False)
+    single_price = models.DecimalField(max_digits=5, decimal_places=2, default = "00000")
     has_double_room = models.BooleanField(default=False)
+    double_room_price = models.DecimalField(max_digits=5, decimal_places=2, default = "00000")
+    has_suite = models.BooleanField(default=False)
+    suite_price = models.DecimalField(max_digits=5, decimal_places=2, default = "00000")
     has_cooking_24h = models.BooleanField(default=False)
     has_checkin_24h = models.BooleanField(default=False)
     has_all_inclusive = models.BooleanField(default=False)
+    all_inclusive_price = models.DecimalField(max_digits=5, decimal_places=2, default = "00000")
     has_half_board = models.BooleanField(default=False)
+    half_board_price = models.DecimalField(max_digits=5, decimal_places=2, default = "00000")
     has_full_board = models.BooleanField(default=False)
+    full_board_price = models.DecimalField(max_digits=5, decimal_places=2, default = "00000")
     has_only_breakfast = models.BooleanField(default=False)
+    breakfast_price = models.DecimalField(max_digits=4, decimal_places=2, default = "00000")
     allow_pet = models.BooleanField(default=False)
     rating = models.CharField(max_length=2, blank = True)  # '10'
     rating_business = models.CharField(max_length=2, blank = True)  # '10'
