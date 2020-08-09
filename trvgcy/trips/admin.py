@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Hotel, Airport, Event, Flight, Trip, Ring
+from .models import Hotel, Airport, Event, Flight, Ring
 
 # Give format to the Admin Area here.
 
@@ -25,7 +25,7 @@ admin.site.register(Hotel, HotelAdmin)
 admin.site.register(Airport, AirportAdmin)
 admin.site.register(Event, EventAdmin)
 admin.site.register(Flight, FlightAdmin)
-admin.site.register(Trip)
 admin.site.register(Ring, RingAdmin)
+
 
 
