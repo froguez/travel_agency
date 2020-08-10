@@ -29,6 +29,9 @@ class EventTripAdmin(admin.ModelAdmin):
 class HotelTripAdmin(admin.ModelAdmin):
     list_display = ('id', 'ring','hotelid','checkin','checkout','total_price')
 
+class TripTemplateAdmin(admin.ModelAdmin):
+    list_display = ("id", "ring","stock", "refund", "cancelled")
+
 # Register your models here.
 
 admin.site.register(Hotel, HotelAdmin)
@@ -37,7 +40,7 @@ admin.site.register(Event, EventAdmin)
 admin.site.register(Flight, FlightAdmin)
 admin.site.register(Ring, RingAdmin)
 
-admin.site.register(TripTemplate)
+admin.site.register(TripTemplate, TripTemplateAdmin)
 admin.site.register(EventTrip, EventTripAdmin)
 admin.site.register(HotelTrip, HotelTripAdmin)
 admin.site.register(FlightTrip, FlightTripAdmin)

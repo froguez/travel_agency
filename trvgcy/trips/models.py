@@ -131,6 +131,7 @@ class TripTemplate(models.Model):
     ring = models.ForeignKey(Ring, on_delete=models.CASCADE, default= False)
     internal_reference = models.CharField(max_length=40)
     comercial_reference = models.CharField(max_length=40)
+    marketing_message =models.CharField(max_length=60, default = "Last days!!")
     main_description = models.CharField(max_length = 120, default="00000")
     secondary_description = models.TextField(max_length =300, default="00000")
     # designerID = models.ForeignKey()
@@ -145,6 +146,9 @@ class TripTemplate(models.Model):
     cancelled = models.IntegerField()
     is_active = models.BooleanField(default=False)
     photo_main = models.ImageField(upload_to='photos/Trips/%Y/%m/%d/photo_main', null=True)
+    img_1 = models.ImageField(upload_to='photos/Trips/%Y/%m/%d/photo_1', null=True, default = '00000')
+    img_2 = models.ImageField(upload_to='photos/Trips/%Y/%m/%d/photo_2', null=True, default = "00000")
+
 
     def __str__(self):
         return self.internal_reference
