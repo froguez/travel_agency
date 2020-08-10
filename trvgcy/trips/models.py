@@ -200,7 +200,7 @@ class Trip(models.Model):
     )
 
     id = models.AutoField(primary_key = True)
-    userID = models.ForeignKey('pages.UserAccount', on_delete=models.CASCADE, default = False)
+    userAccountID = models.ForeignKey('pages.UserAccount', on_delete=models.CASCADE, default = False)
     tripTemplateID = models.ForeignKey(TripTemplate, on_delete=models.CASCADE, default = False)
     eventTripID = models.ForeignKey(EventTrip, on_delete=models.CASCADE, default = False)
     hotelTripID = models.ForeignKey(Hotel, on_delete=models.CASCADE, default = False)
