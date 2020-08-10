@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 # Create your models here.
@@ -155,20 +156,29 @@ class EventTrip(models.Model):
     total_price = models.DecimalField(max_digits=6, decimal_places=2, default = False)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
 class FlightTrip(models.Model):
     id = models.AutoField(primary_key = True)
-    go_flight = models.ForeignKey(Flight, on_delete=models.CASCADE, default = False)
+    ring = models.ForeignKey(Ring, on_delete = models.CASCADE, default = False)
+    go_flight = models.ForeignKey(Flight, on_delete = models.CASCADE, default = False)
     return_flight = models.ForeignKey(Flight, related_name= "+", on_delete=models.CASCADE, default = False)
-    total_tickets = models.IntegerField(default = False)
+    week_num = models.IntegerField(
+        default = 0,
+        validators=[
+            MaxValueValidator(53),
+            MinValueValidator(0)
+            ]
+        )
+    people = models.IntegerField(default = False)
     total_price = models.DecimalField(max_digits=6, decimal_places=2, default = False)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
 class HotelTrip(models.Model):
     id = models.AutoField(primary_key = True)
+    ring = models.ForeignKey(Ring, on_delete=models.CASCADE, default = False)
     hotelid = models.ForeignKey(Hotel, on_delete=models.CASCADE, default = False)
     checkin = models.DateTimeField(default=False)
     checkout = models.DateTimeField(default=False)
@@ -186,7 +196,7 @@ class HotelTrip(models.Model):
     total_price = models.DecimalField(max_digits=7, decimal_places=2, default = False)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
 class Trip(models.Model):
 
@@ -203,7 +213,7 @@ class Trip(models.Model):
     userAccountID = models.ForeignKey('pages.UserAccount', on_delete=models.CASCADE, default = False)
     tripTemplateID = models.ForeignKey(TripTemplate, on_delete=models.CASCADE, default = False)
     eventTripID = models.ForeignKey(EventTrip, on_delete=models.CASCADE, default = False)
-    hotelTripID = models.ForeignKey(Hotel, on_delete=models.CASCADE, default = False)
+    hotelTripID = models.ForeignKey(HotelTrip, on_delete=models.CASCADE, default = False)
     flightTripID = models.ForeignKey(FlightTrip, on_delete=models.CASCADE, default = False)
     final_price = models.DecimalField(max_digits=7, decimal_places=2)
     status = models.CharField(max_length=1, choices=TRIP_STATUS, blank=False, default='I')
