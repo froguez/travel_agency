@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 from .models import TripTemplate
 
@@ -13,9 +14,16 @@ def listing(request):
 
     return render(request, 'trips/listing.html', context)
 
-def trip(request):
+def trip(request, trip_id):
 
-    thetrip = TripTemplate.objects.get(id='1')
+    trip = get_object_or_404(TripTemplate,pk=trip_id)
+
+    context = {
+        'trip':trip
+    }
+
+
+    thetrip = TripTemplate.objects.get(id=trip_id)
 
     context = {'thetrip':thetrip}
 

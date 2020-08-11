@@ -1,9 +1,9 @@
 {% load static %}
 <nav class="navbar navbar-expand-md navbar-light fixed-top py-0.5" id="main-nav">
     <div class="container">
-        <a href="#home" class="navbar-brand">
+        <a class="navbar-brand">
             <img src= "{% static "pages/img/logo.png" %}" width="50" height="50" alt="">
-            <h3 class="d-inline align-middle">Python travels</h3>
+            <h3 class="d-inline align-middle">Python Travels</h3>
         </a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -14,7 +14,7 @@
                     <a href="#home" class="nav-link">Home</a>
                 </li> -->
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link active" href="#">&nbsp; &nbsp;
+                    <a class="nav-link active" href="{% url 'index' %}">&nbsp; &nbsp;
                         <i class="fas fa-home"></i>
                         <br>Home
                     </a>
