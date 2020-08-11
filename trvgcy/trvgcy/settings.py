@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'checkout.apps.CheckoutConfig'
+    'checkout.apps.CheckoutConfig',
     'trips.apps.TripsConfig',
     'pages.apps.PagesConfig',
     'django.contrib.admin',
