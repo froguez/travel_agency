@@ -14,6 +14,14 @@ def listing(request):
 
     return render(request, 'trips/listing.html', context)
 
+def search(request):
+    print("Abre search")
+    print(len(request.GET))
+    print(request.GET)
+    print("Cierra search")
+    return render(request, 'trips/search.html')
+
+
 def trip(request, trip_id):
 
     trip = get_object_or_404(TripTemplate,pk=trip_id)

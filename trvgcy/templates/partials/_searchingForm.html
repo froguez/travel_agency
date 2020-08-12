@@ -2,23 +2,22 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                    <form action="{% url 'listing' %}" class="search-trip" method="get">
-
+                    <form action="{% url 'search' %}" class="search-trip" method = "get">
                         <div class="row">
                             <div class="col-lg align-items-end">
                                 <div class="form-group">
-                                    <label for="#">Destination</label>
+                                    <label for="destination">Destination</label>
                                     <div class="form-field">
                                         <div class="icon"><span class="ion-ios-search"></span></div>
-                                        <input type="text" class="form-control" placeholder="Search place">
+                                        <input type="text" class="form-control" name="destination" placeholder="Search place">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg align-items-end">
                                 <div class="form-group">
-                                    <label for="#">Check-in date</label>
+                                    <label for="checkin">Check-in date</label>
                                     <div class="input-group date" id="datetimepicker7" data-target-input="nearest">
-                                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker7"/>
+                                        <input type="text" class="form-control datetimepicker-input" name ="checkin" data-target="#datetimepicker7"/>
                                         <div class="input-group-append" data-target="#datetimepicker7" data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                         </div>
@@ -27,9 +26,9 @@
                             </div>
                             <div class="col-lg align-items-end">
                                 <div class="form-group">
-                                    <label for="#">Check-out date</label>
+                                    <label for="checkout">Check-out date</label>
                                     <div class="input-group date" id="datetimepicker8" data-target-input="nearest">
-                                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker8"/>
+                                        <input type="text" class="form-control datetimepicker-input" name = "checkout" data-target="#datetimepicker8"/>
                                         <div class="input-group-append" data-target="#datetimepicker8" data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                         </div>
@@ -37,18 +36,19 @@
                                 </div>
                             </div>
                             <div class="col-lg align-items-end">
-                                <div class="form-group">
-                                    <label for="#">Price Limit</label>
+                                    <div class="form-group">
+                                    <label for="price">Price Limit{{ price_limit.item }}</label>
                                     <div class="form-field">
-                                        <div class="select-wrap">
+
                                             <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                            <select name="state" id="" class="form-control">
+                                            <label class = "sr-only">price</label>
+                                            <select name ="price" class="form-control">
                                                <option selected="true" disabled="disabled"> Price (All)</option>
-                                               {% for key,value in price_limit.item %}
-                                                   <option value="{{ key }}">{{ value }}</option>
+                                               {% for key,value in price_limit.items %}
+                                                    <option value="{{ key }}">{{ value }}</option>
                                                {% endfor %}
                                             </select>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>

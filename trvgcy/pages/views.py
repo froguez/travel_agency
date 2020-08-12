@@ -7,14 +7,6 @@ from .choices import destination, check_in, check_out, price_limit
 
 def index(request):
 
-    context = {
-        'destination':destination,
-        'check_in':check_in,
-        'check_out':check_out,
-        'price_limit':price_limit
-    }
-
-
     r = request.POST
     if len(r) == 3:
         #then it is the login POST
@@ -33,4 +25,9 @@ def index(request):
     print(r)
     size = len(r)
     print(size)
+
+    context = {'price_limit' : price_limit}
+
+
+
     return render(request, 'pages/index.html', context)
