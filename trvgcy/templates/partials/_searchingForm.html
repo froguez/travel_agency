@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                    <form action="#" class="search-property-1">
+                    <form action="#" class="search-trip">
                         <div class="row">
                             <div class="col-lg align-items-end">
                                 <div class="form-group">
@@ -16,18 +16,22 @@
                             <div class="col-lg align-items-end">
                                 <div class="form-group">
                                     <label for="#">Check-in date</label>
-                                    <div class="form-field">
-                                        <div class="icon"><span class="ion-ios-calendar"></span></div>
-                                        <input type="text" class="form-control checkin_date" placeholder="Check In Date">
+                                    <div class="input-group date" id="datetimepicker7" data-target-input="nearest">
+                                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker7"/>
+                                        <div class="input-group-append" data-target="#datetimepicker7" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg align-items-end">
                                 <div class="form-group">
                                     <label for="#">Check-out date</label>
-                                    <div class="form-field">
-                                        <div class="icon"><span class="ion-ios-calendar"></span></div>
-                                        <input type="text" class="form-control checkout_date" placeholder="Check Out Date">
+                                    <div class="input-group date" id="datetimepicker8" data-target-input="nearest">
+                                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker8"/>
+                                        <div class="input-group-append" data-target="#datetimepicker8" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -37,14 +41,11 @@
                                     <div class="form-field">
                                         <div class="select-wrap">
                                             <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                            <select name="" id="" class="form-control">
-                                                <option value="">$1,000</option>
-                                                <option value="">$2,000</option>
-                                                <option value="">$3,000</option>
-                                                <option value="">$5,000</option>
-                                                <option value="">$6,000</option>
-                                                <option value="">$8,000</option>
-                                                <option value="">$7,000</option>
+                                            <select name="state" id="" class="form-control">
+                                               <option selected="true" disabled="disabled"> Price (All)</option>
+                                               {% for key,value in price_limit.item %}
+                                                   <option value="{{ key }}">{{ value }}</option>
+                                               {% endfor %}
                                             </select>
                                         </div>
                                     </div>
@@ -58,6 +59,7 @@
                                 </div>
                             </div>
                         </div>
+                    </form>
                 </div>
             </div>
         </div>

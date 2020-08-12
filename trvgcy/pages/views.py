@@ -1,10 +1,20 @@
 from django.shortcuts import render
 from .models import UserAccount
+from .choices import destination, check_in, check_out, price_limit
 
 
 # Create your views here.
 
 def index(request):
+
+    context = {
+        'destination':destination,
+        'check_in':check_in,
+        'check_out':check_out,
+        'price_limit':price_limit
+    }
+
+
     r = request.POST
     if len(r) == 3:
         #then it is the login POST
@@ -23,4 +33,4 @@ def index(request):
     print(r)
     size = len(r)
     print(size)
-    return render(request, 'pages/index.html')
+    return render(request, 'pages/index.html', context)
