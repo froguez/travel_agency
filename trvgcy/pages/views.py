@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import UserAccount
-from .choices import destination, check_in, check_out, price_limit
+from .choices import price_limit
 
 
 # Create your views here.

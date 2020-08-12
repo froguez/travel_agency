@@ -37,12 +37,12 @@
                             </div>
                             <div class="col-lg align-items-end">
                                     <div class="form-group">
-                                    <label for="price">Price Limit{{ price_limit.item }}</label>
+                                    <label for="max_price">Price Limit</label>
                                     <div class="form-field">
 
                                             <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                                             <label class = "sr-only">price</label>
-                                            <select name ="price" class="form-control">
+                                            <select name ="max_price" class="form-control">
                                                <option selected="true" disabled="disabled"> Price (All)</option>
                                                {% for key,value in price_limit.items %}
                                                     <option value="{{ key }}">{{ value }}</option>
