@@ -21,7 +21,6 @@ def search(request):
     print("Cierra search")
     return render(request, 'trips/search.html')
 
-
 def trip(request, trip_id):
 
     trip = get_object_or_404(TripTemplate,pk=trip_id)
@@ -29,7 +28,6 @@ def trip(request, trip_id):
     context = {
         'trip':trip
     }
-
 
     thetrip = TripTemplate.objects.get(id=trip_id)
 
