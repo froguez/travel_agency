@@ -12,7 +12,9 @@
                                 <h6 class="text-muted card-subtitle mb-2">{{trip.marketing_message}}</h6>
                                 <p class="card-text oneline">{{trip.main_description}}</p>
                                 <div class="row">
-                                    <div class="col"><button class="btn btn-outline-primary btn-block" type="button" style="color: rgb(39,111,13);">More details</button></div>
+                                    <div class="col">
+                                        <a href ="{% url 'trips:trip' trip.id %}" class="btn btn-outline-primary btn-block" type="button" style="color: rgb(39,111,13);">More details</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
