@@ -14,6 +14,11 @@ def listing(request):
 
     return render(request, 'trips/listing.html', context)
 
+class search(ListView):
+    
+
+
+
 def search(request):
     print("Abre search")
     print(len(request.GET))
