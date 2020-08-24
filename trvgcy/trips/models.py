@@ -92,8 +92,8 @@ class Airport(models.Model):
 
 class Flight(models.Model):
     id = models.AutoField(primary_key=True)
-    origin = models.ForeignKey(Airport, on_delete = models.CASCADE, default = False)
-    destination = models.ForeignKey(Airport, related_name='+', on_delete = models.CASCADE, default = False)
+    origin_airportid = models.ForeignKey(Airport, on_delete = models.CASCADE, default = False)
+    destination_airportid = models.ForeignKey(Airport, related_name='+', on_delete = models.CASCADE, default = False)
     ring = models.ForeignKey(Ring, on_delete=models.CASCADE, default=False)
     flightnum = models.CharField(max_length=10, default=None)
     airline = models.CharField(max_length=18)
@@ -148,7 +148,6 @@ class TripTemplate(models.Model):
     photo_main = models.ImageField(upload_to='photos/Trips/%Y/%m/%d/photo_main', null=True)
     img_1 = models.ImageField(upload_to='photos/Trips/%Y/%m/%d/photo_1', null=True, default = '00000')
     img_2 = models.ImageField(upload_to='photos/Trips/%Y/%m/%d/photo_2', null=True, default = "00000")
-
 
     def __str__(self):
         return self.internal_reference

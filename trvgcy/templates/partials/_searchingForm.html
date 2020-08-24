@@ -1,8 +1,9 @@
+<!-- called by: pages/index.html -->
 <section id="search" class="bg-dark text-white py-2">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                    <form action="{% url 'trips:listing' %}" class="search-trip" method = "get">
+                    <form action="{% url 'pages:search' %}" class="search-trip" method = "get">
                         <div class="row">
                             <div class="col-lg align-items-end">
                                 <div class="form-group">

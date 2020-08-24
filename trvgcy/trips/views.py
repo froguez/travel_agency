@@ -1,9 +1,14 @@
 from django.shortcuts import render, get_object_or_404
-from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 from .models import TripTemplate
 
-# Create your views here.
+# Connecting to postgres
+
+#conn = psycopg2.connect(
+#    host="localhost",
+#    database="suppliers",
+#    user="postgres",
+#    password="Abcd1234")
 
 def listing(request):
 
@@ -14,17 +19,7 @@ def listing(request):
 
     return render(request, 'trips/listing.html', context)
 
-class search(ListView):
-    
 
-
-
-def search(request):
-    print("Abre search")
-    print(len(request.GET))
-    print(request.GET)
-    print("Cierra search")
-    return render(request, 'trips/search.html')
 
 def trip(request, trip_id):
 
