@@ -43,9 +43,9 @@ class Hotel(models.Model):
     has_kindergarden = models.BooleanField(default=False)
     kindergarden_price = models.DecimalField(max_digits=4, decimal_places=2, default = False)
     has_single_room = models.BooleanField(default=False)
-    single_price = models.DecimalField(max_digits=5, decimal_places=2, default = False)
+    singleR_price = models.DecimalField(max_digits=5, decimal_places=2, default = False)
     has_double_room = models.BooleanField(default=False)
-    double_room_price = models.DecimalField(max_digits=5, decimal_places=2, default = False)
+    doubleR_price = models.DecimalField(max_digits=5, decimal_places=2, default = False)
     has_suite = models.BooleanField(default=False)
     suite_price = models.DecimalField(max_digits=5, decimal_places=2, default = False)
     has_cooking_24h = models.BooleanField(default=False)
@@ -92,11 +92,11 @@ class Airport(models.Model):
 
 class Flight(models.Model):
     id = models.AutoField(primary_key=True)
+    ring_id = models.ForeignKey(Ring, on_delete=models.CASCADE, default=False)
     origin_airportid = models.ForeignKey(Airport, on_delete = models.CASCADE, default = False)
     destination_airportid = models.ForeignKey(Airport, related_name='+', on_delete = models.CASCADE, default = False)
-    ring = models.ForeignKey(Ring, on_delete=models.CASCADE, default=False)
-    flightnum = models.CharField(max_length=10, default=None)
     airline = models.CharField(max_length=18)
+    flightnum = models.CharField(max_length=10, default=None)
     takeoff = models.DateTimeField()
     landing = models.DateTimeField()
     price = models.DecimalField(max_digits=5, decimal_places=2, default = False)
@@ -107,7 +107,7 @@ class Flight(models.Model):
 
 class Event(models.Model):
     id = models.AutoField(primary_key=True)
-    ring = models.ForeignKey(Ring, on_delete=models.CASCADE, default= False)
+    ring_id = models.ForeignKey(Ring, on_delete=models.CASCADE, default= False)
     name = models.CharField(max_length=40, unique = True)
     category = models.CharField(max_length=30)
     price = models.DecimalField(max_digits=5, decimal_places=2)
@@ -128,7 +128,7 @@ class Event(models.Model):
 
 class TripTemplate(models.Model):
     id = models.AutoField(primary_key=True)
-    ring = models.ForeignKey(Ring, on_delete=models.CASCADE, default= False)
+    ring_id = models.ForeignKey(Ring, on_delete=models.CASCADE, default= False)
     internal_reference = models.CharField(max_length=40)
     comercial_reference = models.CharField(max_length=40)
     marketing_message =models.CharField(max_length=60, default = "Last days!!")
@@ -163,7 +163,7 @@ class EventTrip(models.Model):
 
 class FlightTrip(models.Model):
     id = models.AutoField(primary_key = True)
-    ring = models.ForeignKey(Ring, on_delete = models.CASCADE, default = False)
+    ring_id = models.ForeignKey(Ring, on_delete = models.CASCADE, default = False)
     go_flight = models.ForeignKey(Flight, on_delete = models.CASCADE, default = False)
     return_flight = models.ForeignKey(Flight, related_name= "+", on_delete=models.CASCADE, default = False)
     week_num = models.IntegerField(
@@ -173,7 +173,7 @@ class FlightTrip(models.Model):
             MinValueValidator(0)
             ]
         )
-    people = models.IntegerField(default = False)
+    total_passengers = models.IntegerField(default = False)
     total_price = models.DecimalField(max_digits=6, decimal_places=2, default = False)
 
     def __str__(self):
@@ -181,7 +181,7 @@ class FlightTrip(models.Model):
 
 class HotelTrip(models.Model):
     id = models.AutoField(primary_key = True)
-    ring = models.ForeignKey(Ring, on_delete=models.CASCADE, default = False)
+    ring_id = models.ForeignKey(Ring, on_delete=models.CASCADE, default = False)
     hotelid = models.ForeignKey(Hotel, on_delete=models.CASCADE, default = False)
     checkin = models.DateTimeField(default=False)
     checkout = models.DateTimeField(default=False)
@@ -190,12 +190,12 @@ class HotelTrip(models.Model):
     number_of_suites = models.IntegerField(default=False)
     parking_slots = models.IntegerField(default=False)
     spa_tickets = models.IntegerField(default=False)
-    kindergarden_tickets = models.IntegerField(default=False)
-    breakfast_tickets = models.IntegerField(default=False)
-    fullboard_tickets = models.IntegerField(default=False)
-    halfboard_tickets = models.IntegerField(default=False)
-    all_inclusive_tickets = models.IntegerField(default=False)
-    people_to_airport_transfer = models.IntegerField(default=False)
+    total_kindergarden_tickets = models.IntegerField(default=False)
+    total_breakfast_tickets = models.IntegerField(default=False)
+    total_fullboard_tickets = models.IntegerField(default=False)
+    total_halfboard_tickets = models.IntegerField(default=False)
+    total_all_inclusive_tickets = models.IntegerField(default=False)
+    total_airport_transfer = models.IntegerField(default=False)
     total_price = models.DecimalField(max_digits=7, decimal_places=2, default = False)
 
     def __str__(self):
