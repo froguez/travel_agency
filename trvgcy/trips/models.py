@@ -126,31 +126,6 @@ class Event(models.Model):
     def __str__(self):
         return self.name
 
-class TripTemplate(models.Model):
-    id = models.AutoField(primary_key=True)
-    ring = models.ForeignKey(Ring, on_delete=models.CASCADE, default= False)
-    internal_reference = models.CharField(max_length=40)
-    comercial_reference = models.CharField(max_length=40)
-    marketing_message =models.CharField(max_length=60, default = "Last days!!")
-    main_description = models.CharField(max_length = 120, default="00000")
-    secondary_description = models.TextField(max_length =300, default="00000")
-    # designerID = models.ForeignKey()
-    # managerID = models.ForeignKey()
-    include_hotel = models.BooleanField(default=False)
-    include_flight = models.BooleanField(default=False)
-    include_event = models.BooleanField(default=False)
-    basic_price = models.DecimalField(max_digits=6, decimal_places=2, default = False)
-    stock = models.IntegerField()
-    sold = models.IntegerField()
-    refund = models.IntegerField()
-    cancelled = models.IntegerField()
-    is_active = models.BooleanField(default=False)
-    photo_main = models.ImageField(upload_to='photos/Trips/%Y/%m/%d/photo_main', null=True)
-    img_1 = models.ImageField(upload_to='photos/Trips/%Y/%m/%d/photo_1', null=True, default = '00000')
-    img_2 = models.ImageField(upload_to='photos/Trips/%Y/%m/%d/photo_2', null=True, default = "00000")
-
-    def __str__(self):
-        return self.internal_reference
 
 class EventTrip(models.Model):
     id = models.AutoField(primary_key = True)
@@ -200,6 +175,34 @@ class HotelTrip(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+class TripTemplate(models.Model):
+    id = models.AutoField(primary_key=True)
+    ring = models.ForeignKey(Ring, on_delete=models.CASCADE, default= False)
+    internal_reference = models.CharField(max_length=40)
+    comercial_reference = models.CharField(max_length=40)
+    marketing_message =models.CharField(max_length=60, default = "Last days!!")
+    main_description = models.CharField(max_length = 120, default="00000")
+    secondary_description = models.TextField(max_length =300, default="00000")
+    # designerID = models.ForeignKey()
+    # managerID = models.ForeignKey()
+    include_hotel = models.BooleanField(default=False)
+    hoteltrip_id = models.ForeignKey(HotelTrip, on_delete = models.CASCADE, null = True, blank = True)
+    include_flight = models.BooleanField(default=False)
+    include_event = models.BooleanField(default=False)
+    eventtrip_id = models.ForeignKey(EventTrip, on_delete = models.CASCADE, null = True, blank = True)
+    basic_price = models.DecimalField(max_digits=6, decimal_places=2, default = False)
+    stock = models.IntegerField()
+    sold = models.IntegerField()
+    refund = models.IntegerField()
+    cancelled = models.IntegerField()
+    is_active = models.BooleanField(default=False)
+    photo_main = models.ImageField(upload_to='photos/Trips/%Y/%m/%d/photo_main', null=True)
+    img_1 = models.ImageField(upload_to='photos/Trips/%Y/%m/%d/photo_1', null=True, default = '00000')
+    img_2 = models.ImageField(upload_to='photos/Trips/%Y/%m/%d/photo_2', null=True, default = "00000")
+
+    def __str__(self):
+        return self.internal_reference
 
 class Trip(models.Model):
 
