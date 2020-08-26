@@ -129,6 +129,7 @@ class Event(models.Model):
 
 class EventTrip(models.Model):
     id = models.AutoField(primary_key = True)
+    ring = models.ForeignKey(Ring, on_delete = models.CASCADE, null = True, blank = True)
     eventid = models.ForeignKey(Event, on_delete=models.CASCADE, default = False)
     total_tickets = models.IntegerField(default = False)
     total_price = models.DecimalField(max_digits=6, decimal_places=2, default = False)
@@ -187,10 +188,18 @@ class TripTemplate(models.Model):
     # designerID = models.ForeignKey()
     # managerID = models.ForeignKey()
     include_hotel = models.BooleanField(default=False)
-    hoteltrip_id = models.ForeignKey(HotelTrip, on_delete = models.CASCADE, null = True, blank = True)
+    hoteltrip_id = models.ForeignKey(HotelTrip, on_delete = models.CASCADE,
+                                     null = True, blank = True,
+                                     limit_choices_to = {'ring' : ring}
+                                    )
+
     include_flight = models.BooleanField(default=False)
     include_event = models.BooleanField(default=False)
-    eventtrip_id = models.ForeignKey(EventTrip, on_delete = models.CASCADE, null = True, blank = True)
+    eventtrip_id = models.ForeignKey(EventTrip, on_delete = models.CASCADE,
+                                     null = True, blank = True,
+                                     limit_choices_to = {'ring' : ring}
+                                     )
+
     basic_price = models.DecimalField(max_digits=6, decimal_places=2, default = False)
     stock = models.IntegerField()
     sold = models.IntegerField()
