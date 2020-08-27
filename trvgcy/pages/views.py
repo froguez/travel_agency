@@ -48,10 +48,9 @@ def search(request):
     # for item in results:
     #     print(item)
 
+    results = TripTemplate.objects.filter(ring__continent__iexact = destination)
 
-
-
-    results = TripTemplate.objects.all()
+    #results = TripTemplate.objects.all()
 
     context = {
         'results': results
