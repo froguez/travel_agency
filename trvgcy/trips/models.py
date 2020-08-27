@@ -1,7 +1,5 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
-from django.db.models import Q
-
 
 # Create your models here.
 
@@ -189,15 +187,16 @@ class TripTemplate(models.Model):
     # designerID = models.ForeignKey()
     # managerID = models.ForeignKey()
     include_hotel = models.BooleanField(default=False)
-    hoteltrip_id = models.ForeignKey(HotelTrip, on_delete = models.CASCADE,
+    hoteltrip_id = models.ForeignKey(HotelTrip,
+                                     on_delete = models.CASCADE,
                                      null = True, blank = True
                                     )
 
     include_flight = models.BooleanField(default=False)
     include_event = models.BooleanField(default=False)
-    eventtrip_id = models.ForeignKey(EventTrip, on_delete = models.CASCADE,
+    eventtrip_id = models.ForeignKey(EventTrip,
+                                     on_delete = models.CASCADE,
                                      null = True, blank = True,
-                                     limit_choices_to = {'ring' : '1'}
                                      )
 
     basic_price = models.DecimalField(max_digits=6, decimal_places=2, default = False)

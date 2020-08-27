@@ -30,12 +30,12 @@ class HotelTripAdmin(admin.ModelAdmin):
     list_display = ('id', 'ring','hotelid','checkin','checkout','total_price')
 
 class TripTemplateAdmin(admin.ModelAdmin):
-    list_display = ("id", "ring","stock", "refund", "cancelled")
+    list_display = ("id", "ring", "stock", "refund", "cancelled")
 
-    def formfield_for_foreignkey(self, db_field, request, **kwargs):
-        if db_field.name == "hoteltrip_id":
-            kwargs["queryset"] = HotelTrip.objects.filter(ring=2)
-        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+    # def formfield_for_foreignkey(self, db_field, request, **kwargs):
+    #     if db_field.name == "hoteltrip_id":
+    #         kwargs["queryset"] = HotelTrip.objects.filter(ring=2)
+    #     return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 # Register your models here.
 
