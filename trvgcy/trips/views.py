@@ -2,17 +2,13 @@ from django.shortcuts import render, get_object_or_404
 
 from .models import TripTemplate
 
-# Connecting to postgres
-
-#conn = psycopg2.connect(
-#    host="localhost",
-#    database="suppliers",
-#    user="postgres",
-#    password="Abcd1234")
-
 def listing(request):
 
     thetrips = TripTemplate.objects.all()
+
+    for item in thetrips:
+        print(item)
+
     context = {
         'thetrips': thetrips
     }

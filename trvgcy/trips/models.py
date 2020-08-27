@@ -9,6 +9,9 @@ class Ring(models.Model):
     name = models.CharField(max_length=40, unique=True, default=False)
     trips_in_stock = models.IntegerField(default='0')
     sold_trips = models.IntegerField(default='0')
+    city = models.CharField(max_length=80, null = True)
+    country = models.CharField(max_length=80, null=True)
+    continent = models.CharField(max_length=30, null=True)
 
     def __str__(self):
         return self.name
@@ -184,8 +187,6 @@ class TripTemplate(models.Model):
     marketing_message =models.CharField(max_length=60, default = "Last days!!")
     main_description = models.CharField(max_length = 120, default="00000")
     secondary_description = models.TextField(max_length =300, default="00000")
-    # designerID = models.ForeignKey()
-    # managerID = models.ForeignKey()
     include_hotel = models.BooleanField(default=False)
     hoteltrip_id = models.ForeignKey(HotelTrip,
                                      on_delete = models.CASCADE,
@@ -200,6 +201,8 @@ class TripTemplate(models.Model):
                                      )
 
     basic_price = models.DecimalField(max_digits=6, decimal_places=2, default = False)
+    date_to_go =models.DateTimeField(null=True)
+    date_to_return = models.DateTimeField(null=True)
     stock = models.IntegerField()
     sold = models.IntegerField()
     refund = models.IntegerField()

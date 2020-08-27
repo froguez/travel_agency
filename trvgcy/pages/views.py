@@ -1,9 +1,10 @@
-from django.db import connection
+#from django.db import connection
 
 from django.shortcuts import render
 from .models import UserAccount
 from .choices import price_limit
 
+from trips.models import TripTemplate, Hotel, HotelTrip
 
 # Create your views here.
 
@@ -31,7 +32,6 @@ def index(request):
 
     return render(request, 'pages/index.html', context)
 
-
 def search(request):
     r = request.GET
 
@@ -40,18 +40,21 @@ def search(request):
     checkout = r['checkout']
     max_price = r['max_price']
 
-    query = 'SELECT * FROM trips_flight;'
-
-    cursor = connection.cursor()
-    cursor.execute(query)
-    result = cursor.fetchall() # it is a list of lists
-    
-
-
-
+    # query = 'SELECT * FROM trips_triptemplate;'
+    # cursor = connection.cursor()
+    # cursor.execute(query)
+    # results = cursor.fetchall() # it is a list of lists
+    # cursor.close()
+    # for item in results:
+    #     print(item)
 
 
 
-    cursor.close()
 
-    return render(request, 'trips/search.html')
+    results = TripTemplate.objects.all()
+
+    context = {
+        'results': results
+        }
+
+    return render(request, 'trips/search.html', context)

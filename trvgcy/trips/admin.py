@@ -30,7 +30,7 @@ class HotelTripAdmin(admin.ModelAdmin):
     list_display = ('id', 'ring','hotelid','checkin','checkout','total_price')
 
 class TripTemplateAdmin(admin.ModelAdmin):
-    list_display = ("id", "ring", "stock", "refund", "cancelled")
+    list_display = ("id", "ring", "basic_price", "stock", "refund", "cancelled")
 
     # def formfield_for_foreignkey(self, db_field, request, **kwargs):
     #     if db_field.name == "hoteltrip_id":
