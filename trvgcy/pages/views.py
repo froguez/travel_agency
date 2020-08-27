@@ -3,8 +3,10 @@
 from django.shortcuts import render
 from .models import UserAccount
 from .choices import price_limit
+from datetime import datetime
 
 from trips.models import TripTemplate, Hotel, HotelTrip
+from django.db.models import Q
 
 # Create your views here.
 
@@ -37,8 +39,14 @@ def search(request):
 
     destination = r['destination']
     checkin = r['checkin']
-    checkout = r['checkout']
+    checkout_ = r['checkout']
     max_price = r['max_price']
+
+    checkout = datetime.strptime(checkout_, '%m/%d/%Y')
+    checkin = datetime.strptime(checkout_,'%m/%d/%Y')
+
+    print("********************")
+    print(checkout)
 
     # query = 'SELECT * FROM trips_triptemplate;'
     # cursor = connection.cursor()
@@ -48,9 +56,20 @@ def search(request):
     # for item in results:
     #     print(item)
 
-    results = TripTemplate.objects.filter(ring__continent__iexact = destination)
 
-    #results = TripTemplate.objects.all()
+
+    results = TripTemplate.objects.filter(
+        (Q(ring__continent__iexact = destination) |
+        Q(ring__country__iexact = destination) |
+        Q(ring__city__iexact = destination)),
+        basic_price__lte = max_price,
+        # date_to_return__lte = checkout,
+        # date_to_go__gte = checkin
+    )
+
+
+
+        #results = TripTemplate.objects.all()
 
     context = {
         'results': results
