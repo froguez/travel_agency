@@ -26,18 +26,22 @@ def trip(request, trip_id):
     }
 
     thetrip = TripTemplate.objects.get(id=trip_id)
+    a =TripTemplate.objects.values_list('hoteltrip_id', flat = True).get(id=trip_id)
+    #a= TripTemplate.objects.get(id=trip_id).values_list('hoteltrip_id', flat = True)
+    #a = thetrip.values('hoteltrip_id')
     print("*****************")
-    # thetrip is a Django QuerySet (JSON)
-    print(thetrip.hoteltrip_id)
+    # thetrip is a Django QuerySet, and by the way:
+    # Django querysets are not JSON serializables
+    print(a)
     print("*****************")
-    thehoteltrip = HotelTrip.objects.get(id=thetrip.hoteltrip_id)
-    # Error becouse thetrip is a Django QuerySet (JSON), entonces
-    # thetrip.hoteltrip_id devuelve <HotelTrip:9> cuando 'id'
-    # lo que espera es un número entero.
-    thehotel = Hotel.objects.get(id=thehoteltrip.hotelid)
+    b = HotelTrip.objects.values_list('hotelid', flat = True).get(id=a)
+    # Error becouse thetrip is a Django QuerySet, entonces
+    # thetrip.hoteltrip_id devuelve <'HotelTrip':9> cuando 'id'
+    # lo que espera es un número entero. Y además no es subscriptable, por
+    # lo que thetrip[0].... da error.
 
+    thehotel = Hotel.objects.get(id=b)
 
-
-    context = {'thetrip':thetrip}
+    context = {'thetrip':thetrip, 'thehotel':thehotel}
 
     return render(request, "trips/trip.html", context)
