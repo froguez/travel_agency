@@ -38,11 +38,11 @@ def search(request):
 
     destination = r['destination']
     checkin = r['checkin']
-    checkout_ = r['checkout']
+    checkout = r['checkout']
     max_price = r['max_price']
 
-    checkout = datetime.strptime(checkout_, '%m/%d/%Y')
-    checkin = datetime.strptime(checkout_,'%m/%d/%Y')
+    checkout = datetime.strptime(checkout, '%m/%d/%Y')
+    checkin = datetime.strptime(checkin,'%m/%d/%Y')
 
     print("********************")
     print(checkout)
@@ -55,20 +55,14 @@ def search(request):
     # for item in results:
     #     print(item)
 
-
-
     results = TripTemplate.objects.filter(
         (Q(ring__continent__iexact = destination) |
         Q(ring__country__iexact = destination) |
-        Q(ring__city__iexact = destination)),
+        Q(ring__city__iexact = destination))).filter(
         basic_price__lte = max_price,
-        # date_to_return__lte = checkout,
-        # date_to_go__gte = checkin
+        date_to_return__lte = checkout,
+        date_to_go__gte = checkin
     )
-
-
-
-        #results = TripTemplate.objects.all()
 
     context = {
         'results': results
