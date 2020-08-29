@@ -27,7 +27,8 @@ def index(request):
     thetrips = TripTemplate.objects.all()
 
     context = {
-        'thetrips': thetrips
+        'thetrips': thetrips,
+        'price_limit': price_limit
     }
 
     return render(request, 'pages/index.html', context)
