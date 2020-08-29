@@ -1,22 +1,27 @@
 <!-- SHOWCASE SLIDER -->
+{% load static %}
 <section id="showcase">
     <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
         <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
-            <li data-target="#myCarousel" data-slide-to="4"></li>
+            {% for trip in thetrips %}
+            {% if forloop.first %}
+                <li data-target="#myCarousel" data-slide-to="{{ forloop.counter }}" class="active"></li>
+            {% else %}
+                <li data-target="#myCarousel" data-slide-to="{{ forloop.counter }}"></li>
+            {% endif %}
+            {% endfor %}
         </ol>
         <div class="carousel-inner">
-            <div class="carousel-item carousel-image-1 active"
+            <div class="carousel-item active" style="background-image:url({% static 'pages/img/image1.jpg' %});
+                                                     background-size: cover; " >
+                 <div class="container">
                     <div class="carousel-caption d-none d-sm-block text-right mb-5">
                         <h1 class="display-3">The Alps</h1>
                         <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, aperiam vel ullam deleniti
                             </p>
                         <a href="#" class="btn btn-danger btn-lg">Special offer!</a>
                     </div>
-                </div>
+                 </div>
             </div>
 
             <div class="carousel-item carousel-image-2">
