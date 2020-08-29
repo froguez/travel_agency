@@ -6,9 +6,6 @@ def listing(request):
 
     thetrips = TripTemplate.objects.all()
 
-    for item in thetrips:
-        print(item)
-
     context = {
         'thetrips': thetrips
     }
@@ -35,6 +32,7 @@ def trip(request, trip_id):
     a = TripTemplate.objects.values_list('eventtrip_id', flat = True).get(id=trip_id)
     b = EventTrip.objects.values_list('eventid', flat = True).get(id=a)
     thevent = Event.objects.get(id=b)
+
     context = {'thetrip':thetrip, 'thehotel':thehotel, 'thevent':thevent}
 
     return render(request, "trips/trip.html", context)

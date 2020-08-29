@@ -24,13 +24,11 @@ def index(request):
         # raise an exception becouse something went wrong
         print(" !!! ERROR, something when wrong with the login/register POST !!!")
 
-    # print(r) ## Delete, debuging purposes!!
-    # print(r.json())
-    print(r)
-    size = len(r)
-    print(size)
+    thetrips = TripTemplate.objects.all()
 
-    context = {'price_limit': price_limit}
+    context = {
+        'thetrips': thetrips
+    }
 
     return render(request, 'pages/index.html', context)
 

@@ -98,7 +98,8 @@
                 </form>
             </div>
             <div>
-                <button class="btn btn-primary btn-block" type="button"><i class="fa fa-star"></i>Button</button></div>
+                <button href ="{% url 'checkout:checkout' thetrip.id %}" class="btn btn-primary btn-block" type="button">
+                    <i class="fa fa-star"></i>Button</button></div>
             <div>
                 <p class="m-2">{{ thetrip.secondary_description }}<br><br></p>
             </div>
@@ -113,7 +114,7 @@
                 <a class="nav-link" role="tab" data-toggle="pill" href="#tab-1"><i class="fa fa-star"></i>button</a>
             </li>
             <li class="nav-item">
-                    <a class="nav-link active" role="tab" data-toggle="pill" href="#tab-2"><i class="fa fa-star"></i>button</a>
+                    <a  class="nav-link active" role="tab" data-toggle="pill"><i class="fa fa-star"></i>button</a>
             </li>
         </ul>
         <div class="tab-content">
