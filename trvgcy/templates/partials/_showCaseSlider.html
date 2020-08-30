@@ -12,66 +12,37 @@
             {% endfor %}
         </ol>
         <div class="carousel-inner">
-            <div class="carousel-item active" style="background-image:url({% static 'pages/img/image1.jpg' %});
+            {% for trip in thetrips %}
+            {% if forloop.first %}
+            <div class="carousel-item active" style="background-image:url({{trip.photo_index.url}});
                                                      background-size: cover; " >
                  <div class="container">
                     <div class="carousel-caption d-none d-sm-block text-right mb-5">
-                        <h1 class="display-3">The Alps</h1>
-                        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, aperiam vel ullam deleniti
+                        <h1 class="display-3">{{ trip.comercial_reference }}</h1>
+                        <p class="lead">{{ trip.marketing_message }}
                             </p>
-                        <a href="#" class="btn btn-danger btn-lg">Special offer!</a>
+                        <a href="{% url 'trips:trip' trip.id %}" class="btn btn-danger btn-lg">More details</a>
                     </div>
                  </div>
             </div>
-
-            <div class="carousel-item carousel-image-2">
+            {% else %}
+            <div class="carousel-item" style="background-image:url({{trip.photo_index.url}});
+                                              background-size: cover; " >
                 <div class="container">
                     <div class="carousel-caption d-none d-sm-block text-right mb-5">
-                        <h1 class="display-3">Brazil</h1>
-                        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, aperiam vel ullam deleniti
+                        <h1 class="display-3">{{ trip.comercial_reference }}</h1>
+                        <p class="lead">{{ trip.marketing_message }}
                            </p>
-                        <a href="#" class="btn btn-primary btn-lg">Book it now!</a>
+                        <a href="{% url 'trips:trip' trip.id %}" class="btn btn-primary btn-lg">More details</a>
                     </div>
                 </div>
             </div>
-
-            <div class="carousel-item carousel-image-3">
-                <div class="container">
-                    <div class="carousel-caption d-none d-sm-block text-right mb-5">
-                        <h1 class="display-3">Fuerteventura</h1>
-                        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, aperiam vel ullam deleniti
-                            </p>
-                        <a href="#" class="btn btn-success btn-lg">Best prices!</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel-item carousel-image-4">
-                <div class="container">
-                    <div class="carousel-caption d-none d-sm-block mb-5">
-                        <h1 class="display-3">Tallinn</h1>
-                        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, aperiam vel ullam deleniti
-                            </p>
-                        <a href="#" class="btn btn-success btn-lg">Last days!</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel-item carousel-image-5">
-                <div class="container">
-                    <div class="carousel-caption d-none d-sm-block text-right mb-5">
-                        <h1 class="display-3">Costa Rica</h1>
-                        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, aperiam vel ullam deleniti
-                        </p>
-                        <a href="#" class="btn btn-success btn-lg">Book it now!</a>
-                    </div>
-                </div>
-            </div>
+            {% endif %}
+            {% endfor %}
         </div>
         <a href="#myCarousel" data-slide="prev" class="carousel-control-prev">
             <span class="carousel-control-prev-icon"></span>
         </a>
-
         <a href="#myCarousel" data-slide="next" class="carousel-control-next">
             <span class="carousel-control-next-icon"></span>
         </a>

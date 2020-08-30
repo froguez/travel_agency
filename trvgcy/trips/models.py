@@ -208,6 +208,7 @@ class TripTemplate(models.Model):
     refund = models.IntegerField()
     cancelled = models.IntegerField()
     is_active = models.BooleanField(default=False)
+    photo_index = models.ImageField(upload_to='photos/Trips/%Y/%m/%d/photo_main', null=True)
     photo_main = models.ImageField(upload_to='photos/Trips/%Y/%m/%d/photo_main', null=True)
     img_1 = models.ImageField(upload_to='photos/Trips/%Y/%m/%d/photo_1', null=True, default = '00000')
     img_2 = models.ImageField(upload_to='photos/Trips/%Y/%m/%d/photo_2', null=True, default = "00000")
