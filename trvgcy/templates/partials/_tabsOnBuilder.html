@@ -1,0 +1,170 @@
+<div class="container mt-3">
+    <br>
+    <div>
+        <ul class="nav nav-pills nav-justified shadow">
+            <li class="nav-item">
+                <a class="nav-link" role="tab" data-toggle="pill" href="#tab-1"><i class="fa fa-plane-departure"></i> Flights</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" role="tab" data-toggle="pill" href=#tab-2"><i class="fa fa-avianex"></i> Airports</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" role="tab" data-toggle="pill" href="#tab-3"><i class="fa fa-hotel"></i> Hotels</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" role="tab" data-toggle="pill" href="#tab-4"><i class="fa fa-hiking"></i> Events</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" role="tab" data-toggle="pill" href="#tab-5"><i class="fa fa-ring"></i> Rings</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" role="tab" data-toggle="pill" href="#tab-6"><i class="fa fa-suitcase-rolling">
+                                                                                      </i> Trip Templates</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade" role="tabpanel" id="tab-1">
+                <div class="table-responsive mt-3">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            {% for key, value in dict_display_flights.items %}
+                            <th>{{ value|upper }}</th>
+                            {% endfor %}
+                        </tr>
+                        </thead>
+                        <body>
+                        {% for rows in flights %}
+                        <tr>
+                            {%  for item in dict_display_flights.items  %}
+                            <td>{{ flights.id }}</td>
+                            {%  endfor  %}
+                        </tr>
+                        {% endfor %}
+                        </body>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane fade" role="tabpanel" id="tab-2">
+                <div class="table-responsive mt-3">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            {% for key, value in dict_display_airports.items %}
+                                <th>{{ value|upper }}</th>
+                            {% endfor %}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for rows in airports %}
+                            <tr>
+                                {% for item in dict_display_airports.items %}
+                                    <td>{{ airports.id }} 1</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane fade" role="tabpanel" id="tab-3">
+                <div class="table-responsive mt-3">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            {% for items in display_from_flights %}
+                                <th>Ring</th>
+                            {% endfor %}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for rows in flights %}
+                            <tr>
+                                {% for items in display_from_flights %}
+                                    <td>Cell 1</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane fade" role="tabpanel" id="tab-4">
+                <div class="table-responsive mt-3">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            {% for items in display_from_flights %}
+                                <th>Ring</th>
+                            {% endfor %}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for rows in flights %}
+                            <tr>
+                                {% for items in display_from_flights %}
+                                    <td>Cell 1</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane fade" role="tabpanel" id="tab-5">
+                <div class="table-responsive mt-3">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            {% for items in display_from_flights %}
+                                <th>Ring</th>
+                            {% endfor %}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for rows in flights %}
+                            <tr>
+                                {% for items in display_from_flights %}
+                                    <td>Cell 1</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane fade" role="tabpanel" id="tab-6">
+                <div class="table-responsive mt-3">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            {% for items in display_from_flights %}
+                                <th>Ring</th>
+                            {% endfor %}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for rows in flights %}
+                            <tr>
+                                {% for items in display_from_flights %}
+                                    <td>Cell 1</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

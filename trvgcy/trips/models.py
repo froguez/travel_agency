@@ -128,7 +128,6 @@ class Event(models.Model):
     def __str__(self):
         return self.name
 
-
 class EventTrip(models.Model):
     id = models.AutoField(primary_key = True)
     ring = models.ForeignKey(Ring, on_delete = models.CASCADE, null = True, blank = True)
