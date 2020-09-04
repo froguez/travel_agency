@@ -1,25 +1,31 @@
+{%  load app_filters %}
 <div class="container mt-3">
     <br>
     <div>
         <ul class="nav nav-pills nav-justified shadow">
             <li class="nav-item">
-                <a class="nav-link" role="tab" data-toggle="pill" href="#tab-1"><i class="fa fa-plane-departure"></i> Flights</a>
+                <a class="nav-link" role="tab" data-toggle="pill" href="#tab-1">
+                    <i class="fa fa-plane-departure"></i> Flights</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" role="tab" data-toggle="pill" href=#tab-2"><i class="fa fa-avianex"></i> Airports</a>
+                <a class="nav-link" role="tab" data-toggle="pill" href="#tab-2">
+                    <i class="fa fa-avianex"></i> Airports</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" role="tab" data-toggle="pill" href="#tab-3"><i class="fa fa-hotel"></i> Hotels</a>
+                <a class="nav-link" role="tab" data-toggle="pill" href="#tab-3">
+                    <i class="fa fa-hotel"></i> Hotels</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" role="tab" data-toggle="pill" href="#tab-4"><i class="fa fa-hiking"></i> Events</a>
+                <a class="nav-link" role="tab" data-toggle="pill" href="#tab-4">
+                    <i class="fa fa-hiking"></i> Events</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" role="tab" data-toggle="pill" href="#tab-5"><i class="fa fa-ring"></i> Rings</a>
+                <a class="nav-link" role="tab" data-toggle="pill" href="#tab-5">
+                    <i class="fa fa-ring"></i> Rings</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" role="tab" data-toggle="pill" href="#tab-6"><i class="fa fa-suitcase-rolling">
-                                                                                      </i> Trip Templates</a>
+                <a class="nav-link active" role="tab" data-toggle="pill" href="#tab-6">
+                    <i class="fa fa-suitcase-rolling"></i> Trip Templates</a>
             </li>
         </ul>
         <div class="tab-content">
@@ -34,10 +40,10 @@
                         </tr>
                         </thead>
                         <body>
-                        {% for rows in flights %}
+                        {% for row in flights %}
                         <tr>
-                            {%  for item in dict_display_flights.items  %}
-                            <td>{{ flights.id }}</td>
+                            {%  for key, value in dict_display_flights.items  %}
+                            <td> {{row|hash:value}}</td>
                             {%  endfor  %}
                         </tr>
                         {% endfor %}
@@ -45,8 +51,6 @@
                     </table>
                 </div>
             </div>
-        </div>
-        <div class="tab-content">
             <div class="tab-pane fade" role="tabpanel" id="tab-2">
                 <div class="table-responsive mt-3">
                     <table class="table">
@@ -58,10 +62,10 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {% for rows in airports %}
+                        {% for row in airports %}
                             <tr>
-                                {% for item in dict_display_airports.items %}
-                                    <td>{{ airports.id }} 1</td>
+                                {% for key, value in dict_display_airports.items %}
+                                    <td>{{row|hash:value}}</td>
                                 {% endfor %}
                             </tr>
                         {% endfor %}
@@ -69,23 +73,21 @@
                     </table>
                 </div>
             </div>
-        </div>
-        <div class="tab-content">
             <div class="tab-pane fade" role="tabpanel" id="tab-3">
                 <div class="table-responsive mt-3">
                     <table class="table">
                         <thead>
                         <tr>
-                            {% for items in display_from_flights %}
-                                <th>Ring</th>
+                            {% for key, value in dict_display_hotels.items %}
+                                <th>{{ value|upper }}</th>
                             {% endfor %}
                         </tr>
                         </thead>
                         <tbody>
-                        {% for rows in flights %}
+                        {% for row in hotels %}
                             <tr>
-                                {% for items in display_from_flights %}
-                                    <td>Cell 1</td>
+                                {% for key, value in dict_display_hotels.items %}
+                                    <td>{{row|hash:value}}</td>
                                 {% endfor %}
                             </tr>
                         {% endfor %}
@@ -93,23 +95,21 @@
                     </table>
                 </div>
             </div>
-        </div>
-        <div class="tab-content">
             <div class="tab-pane fade" role="tabpanel" id="tab-4">
                 <div class="table-responsive mt-3">
                     <table class="table">
                         <thead>
                         <tr>
-                            {% for items in display_from_flights %}
-                                <th>Ring</th>
+                            {% for key, value in dict_display_event.items %}
+                                 <th>{{ value|upper }}</th>
                             {% endfor %}
                         </tr>
                         </thead>
                         <tbody>
-                        {% for rows in flights %}
+                        {% for row in events %}
                             <tr>
-                                {% for items in display_from_flights %}
-                                    <td>Cell 1</td>
+                                {% for key, value in dict_display_event.items %}
+                                    <td>{{row|hash:value}}</td>
                                 {% endfor %}
                             </tr>
                         {% endfor %}
@@ -117,23 +117,21 @@
                     </table>
                 </div>
             </div>
-        </div>
-        <div class="tab-content">
             <div class="tab-pane fade" role="tabpanel" id="tab-5">
                 <div class="table-responsive mt-3">
                     <table class="table">
                         <thead>
                         <tr>
-                            {% for items in display_from_flights %}
-                                <th>Ring</th>
+                            {% for key, value in dict_display_ring.items %}
+                                <th>{{ value|upper }}</th>
                             {% endfor %}
                         </tr>
                         </thead>
                         <tbody>
-                        {% for rows in flights %}
+                        {% for row in rings %}
                             <tr>
-                                {% for items in display_from_flights %}
-                                    <td>Cell 1</td>
+                                {% for key,value in dict_display_ring.items %}
+                                    <td>{{row|hash:value}}</td>
                                 {% endfor %}
                             </tr>
                         {% endfor %}
@@ -141,23 +139,21 @@
                     </table>
                 </div>
             </div>
-        </div>
-        <div class="tab-content">
-            <div class="tab-pane fade" role="tabpanel" id="tab-6">
+            <div class="tab-pane fade show active" role="tabpanel" id="tab-6">
                 <div class="table-responsive mt-3">
                     <table class="table">
                         <thead>
                         <tr>
-                            {% for items in display_from_flights %}
-                                <th>Ring</th>
+                            {% for key, value in dict_display_triptemplate.items %}
+                              <th>{{ value|upper }}</th>
                             {% endfor %}
                         </tr>
                         </thead>
                         <tbody>
-                        {% for rows in flights %}
+                        {% for row in triptemplates %}
                             <tr>
-                                {% for items in display_from_flights %}
-                                    <td>Cell 1</td>
+                                {% for key, value in dict_display_triptemplate.items %}
+                                    <td>{{row|hash:value}}</td>
                                 {% endfor %}
                             </tr>
                         {% endfor %}

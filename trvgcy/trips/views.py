@@ -1,8 +1,14 @@
+from django.core.paginator import Paginator
+from django.views.generic import View
 from django.shortcuts import render, get_object_or_404
+
 
 from .models import TripTemplate, HotelTrip, Hotel, \
                     EventTrip, Event, Flight, Airport, \
                     Ring
+
+
+
 
 def listing(request):
 
@@ -14,31 +20,47 @@ def listing(request):
 
     return render(request, 'trips/listing.html', context)
 
-def builder(request):
+class builder(View):
+# The get method of the builder view, will just rend to the user the builder.html template.
+    def get(self,request):
 
-    dict_display_flights = {'1':'ring', '2':'fligthnum', '3':'airline', '4':'origin',
-                            '5':'destination', '6':'takeoff', '7':'landing', '8':'price'}
-    dict_display_airports = {'1':'name','2':'continent','3':'country','4':'city'}
+        dict_display_flights = {'1':'ring', '2':'fligthnum', '3':'airline', '4':'origin',
+                                '5':'destination', '6':'takeoff', '7':'landing', '8':'price'}
+        dict_display_airports = {'1':'name','2':'continent','3':'country','4':'city'}
+        dict_display_hotels = {'1':'name','2':'stars','3':'continent','4':'country',
+                               '5':'city','6':'category','7':'rating'}
+        dict_display_event = {'1':'name', '2':'category', '3':'ring_id','4':'price'}
+        dict_display_ring = {'1':'name', '2':'trips_in_stock', '3':'sold_trips'}
+        dict_display_triptemplate = {'1':'comercial_reference', '2':'ring', '3':'basic_price',
+                                     '4':'stock', '5':'sold'}
 
-    flights = Flight.objects.all()
-    events = Event.objects.all()
-    airports = Airport.objects.all()
-    hotels = Hotel.objects.all()
-    triptemplates = TripTemplate.objects.all()
-    rings = Ring.objects.all()
+        flights = Flight.objects.all().order_by('-id')
+        events = Event.objects.all().order_by('-id')
+        airports = Airport.objects.all().order_by('-id')
+        hotels = Hotel.objects.all().order_by('-id')
+        triptemplates = TripTemplate.objects.all().order_by('-id')
+        rings = Ring.objects.all().order_by('-id')
 
-    context = {
-        'flights': flights,
-        'events': events,
-        'airports': airports,
-        'hotels': hotels,
-        'triptemplates' : triptemplates,
-        'rings' : rings,
-        'dict_display_flights': dict_display_flights,
-        'dict_display_airports': dict_display_airports
-    }
+        flights_paginator = Paginator(flights, 3)
+        flight_page = request.GET('flight_page')
+        fligths = Paginator.get_page(flight_page)
 
-    return render(request, 'trips/builder.html', context)
+        context = {
+            'flights': flights,
+            'events': events,
+            'airports': airports,
+            'hotels': hotels,
+            'triptemplates' : triptemplates,
+            'rings' : rings,
+            'dict_display_flights': dict_display_flights,
+            'dict_display_airports': dict_display_airports,
+            'dict_display_hotels': dict_display_hotels,
+            'dict_display_event': dict_display_event,
+            'dict_display_ring': dict_display_ring,
+            'dict_display_triptemplate': dict_display_triptemplate
+        }
+
+        return render(request, 'trips/builder.html', context)
 
 def trip(request, trip_id):
 
