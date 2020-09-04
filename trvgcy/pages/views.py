@@ -12,7 +12,9 @@ from django.db.models import Q
 
 def index(request):
     r = request.POST
-    if len(r) == 3:
+    print(len(r))
+    print(r)
+    if len(r) == 2:
         # then it is the login POST
         pass
     elif len(r) == 5:

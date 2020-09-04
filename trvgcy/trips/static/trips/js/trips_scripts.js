@@ -9,5 +9,5 @@ $(document).ready( function () {
     $('#table4').DataTable();
     $('#table5').DataTable();
     $('#table6').DataTable();
+});
 
-    });
