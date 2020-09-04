@@ -41,10 +41,6 @@ class builder(View):
         triptemplates = TripTemplate.objects.all().order_by('-id')
         rings = Ring.objects.all().order_by('-id')
 
-        flights_paginator = Paginator(flights, 3)
-        flight_page = request.GET('flight_page')
-        fligths = Paginator.get_page(flight_page)
-
         context = {
             'flights': flights,
             'events': events,
@@ -57,7 +53,7 @@ class builder(View):
             'dict_display_hotels': dict_display_hotels,
             'dict_display_event': dict_display_event,
             'dict_display_ring': dict_display_ring,
-            'dict_display_triptemplate': dict_display_triptemplate
+            'dict_display_triptemplate': dict_display_triptemplate,
         }
 
         return render(request, 'trips/builder.html', context)
