@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
     <!-- STYLE -->
     <link rel="stylesheet" href="{% static "pages/scss/style.css" %}">
+    <!-- Data Table -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
     <!-- TITLE -->
     <title>Bootstrap Theme</title>
 </head>
@@ -80,6 +82,13 @@
         });
     });
 </script>
+
+<!-- Datatable -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
+<!-- My scripts -->
+<script src="{% static "trips/js/trips_scripts.js" %}"></script>
+
 
 </body>
 </html>

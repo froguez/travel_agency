@@ -1,0 +1,54 @@
+<!-- SHOWCASE SLIDER -->
+{% load static %}
+<section id="showcase">
+    <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+        <ol class="carousel-indicators">
+            {% for trip in thetrips %}
+            {% if forloop.first %}
+                <li data-target="#myCarousel" data-slide-to="{{ forloop.counter }}" class="active"></li>
+            {% else %}
+                <li data-target="#myCarousel" data-slide-to="{{ forloop.counter }}"></li>
+            {% endif %}
+            {% endfor %}
+        </ol>
+        <div class="carousel-inner">
+            {% for trip in thetrips %}
+            {% if forloop.first %}
+            <div class="carousel-item active" style="background-image:url({{trip.photo_index.url}});
+                                                     background-size: cover; " >
+                 <div class="container">
+                    <div class="carousel-caption d-none d-sm-block text-right mb-5">
+                        <h1 class="display-3">{{ trip.comercial_reference }}</h1>
+                        <p class="lead">{{ trip.marketing_message }}
+                            </p>
+                        <a href="{% url 'trips:trip' trip.id %}" class="btn btn-danger btn-lg">More details</a>
+                    </div>
+                 </div>
+            </div>
+            {% else %}
+            <div class="carousel-item" style="background-image:url({{trip.photo_index.url}});
+                                              background-size: cover; " >
+                <div class="container">
+                    <div class="carousel-caption d-none d-sm-block text-right mb-5">
+                        <h1 class="display-3">{{ trip.comercial_reference }}</h1>
+                        <p class="lead">{{ trip.marketing_message }}
+                           </p>
+                        <a href="{% url 'trips:trip' trip.id %}" class="btn btn-primary btn-lg">More details</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <a href="#myCarousel" data-slide="prev" class="carousel-control-prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a href="#myCarousel" data-slide="next" class="carousel-control-next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+</section>
+
+
+
+

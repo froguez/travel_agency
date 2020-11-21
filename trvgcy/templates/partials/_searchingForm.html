@@ -1,0 +1,69 @@
+<!-- called by: pages/index.html -->
+<section id="search" class="bg-dark text-white py-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                    <form action="{% url 'pages:search' %}" class="search-trip" method = "get">
+                        <div class="row">
+                            <div class="col-lg align-items-end">
+                                <div class="form-group">
+                                    <label for="destination">Destination</label>
+                                    <div class="form-field">
+                                        <div class="icon"><span class="ion-ios-search"></span></div>
+                                        <input type="text" class="form-control" name="destination" placeholder="Search place">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg align-items-end">
+                                <div class="form-group">
+                                    <label for="checkin">Check-in date</label>
+                                    <div class="input-group date" id="datetimepicker7" data-target-input="nearest">
+                                        <input type="text" class="form-control datetimepicker-input" name ="checkin" data-target="#datetimepicker7"/>
+                                        <div class="input-group-append" data-target="#datetimepicker7" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg align-items-end">
+                                <div class="form-group">
+                                    <label for="checkout">Check-out date</label>
+                                    <div class="input-group date" id="datetimepicker8" data-target-input="nearest">
+                                        <input type="text" class="form-control datetimepicker-input" name = "checkout" data-target="#datetimepicker8"/>
+                                        <div class="input-group-append" data-target="#datetimepicker8" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg align-items-end">
+                                    <div class="form-group">
+                                    <label for="max_price">Price Limit</label>
+                                    <div class="form-field">
+
+                                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                            <label class = "sr-only">price</label>
+                                            <select name ="max_price" class="form-control">
+                                               <option selected="true" disabled="disabled"> Price (All)</option>
+                                               {% for key,value in price_limit.items %}
+                                                    <option value="{{ key }}">{{ value }}</option>
+                                               {% endfor %}
+                                            </select>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg align-self-end">
+                                <div class="form-group">
+                                    <div class="form-field">
+                                        <input type="submit" value="Search" class="form-control btn btn-primary">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

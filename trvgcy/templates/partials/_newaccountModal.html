@@ -1,0 +1,51 @@
+{% block javascript %}
+  <script>
+    $("#id_username").change(function () {
+      console.log( $(this).val() );
+    });
+  </script>
+{% endblock %}
+
+<div class="modal" id="newaccountModal">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create New Account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class = "modal-body">
+                <form role ="form" id = "modal_form"
+                    method="post"
+                    oninput='password2.setCustomValidity(password2.value != password.value ?
+                            "Passwords do not match.": "")'
+                    action="#">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input class="form-control" type="text" placeholder="Username" name="username"
+                                                                                       id="id_username">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">email ID</label>
+                        <input class="form-control" type="email" placeholder="Enter your email" name="email"
+                                                                                                id="id_email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input class="form-control" type="password" placeholder="Password" name="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="password2">Re-Type Password</label>
+                        <input class="form-control" type="password" placeholder="Re-Type Password" name="password2">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-block" type="submit">Create account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -24,13 +24,18 @@ class FlightTripAdmin(admin.ModelAdmin):
     list_display = ('id','ring','week_num','go_flight','return_flight','people','total_price')
 
 class EventTripAdmin(admin.ModelAdmin):
-    list_display = ('id', 'total_tickets', 'total_price')
+    list_display = ('id', 'ring', 'total_tickets', 'total_price')
 
 class HotelTripAdmin(admin.ModelAdmin):
     list_display = ('id', 'ring','hotelid','checkin','checkout','total_price')
 
 class TripTemplateAdmin(admin.ModelAdmin):
-    list_display = ("id", "ring","stock", "refund", "cancelled")
+    list_display = ("id", "ring", "basic_price", "stock", "refund", "cancelled")
+
+    # def formfield_for_foreignkey(self, db_field, request, **kwargs):
+    #     if db_field.name == "hoteltrip_id":
+    #         kwargs["queryset"] = HotelTrip.objects.filter(ring=2)
+    #     return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 # Register your models here.
 
