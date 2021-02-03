@@ -7,22 +7,13 @@ from .models import TripTemplate, HotelTrip, Hotel, \
                     EventTrip, Event, Flight, Airport, \
                     Ring
 
-
-
-
 def listing(request):
-<<<<<<< HEAD
-def trip(request, trip_id):
-    return render(request, "trips/trip.html")
-=======
-
-    thetrips = TripTemplate.objects.all()
-
+    thetrips=TripTemplate.objects.all()
     context = {
         'thetrips': thetrips
     }
-
     return render(request, 'trips/listing.html', context)
+
 
 class builder(View):
 # The get method of the builder view, will just rend to the user the builder.html template.
@@ -84,4 +75,4 @@ def trip(request, trip_id):
     context = {'thetrip':thetrip, 'thehotel':thehotel, 'thevent':thevent}
 
     return render(request, "trips/trip.html", context)
->>>>>>> development
+

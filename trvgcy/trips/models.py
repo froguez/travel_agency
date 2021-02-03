@@ -1,6 +1,5 @@
 from django.db import models
-<<<<<<< HEAD
-=======
+
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
@@ -242,7 +241,7 @@ class Trip(models.Model):
 
 
 
->>>>>>> development
+
 
 
 

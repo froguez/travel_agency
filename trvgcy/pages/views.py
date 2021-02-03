@@ -1,13 +1,9 @@
 #from django.db import connection
 
 from django.shortcuts import render
-<<<<<<< HEAD
-
-=======
 from .models import UserAccount
 from .choices import price_limit
 from datetime import datetime
->>>>>>> development
 
 from trips.models import TripTemplate, Hotel, HotelTrip
 from django.db.models import Q
@@ -15,10 +11,8 @@ from django.db.models import Q
 # Create your views here.
 
 def index(request):
-<<<<<<< HEAD
 
     return render(request, 'pages/index.html')
-=======
     r = request.POST
     print(len(r))
     print(r)
@@ -79,4 +73,3 @@ def search(request):
         }
 
     return render(request, 'trips/search.html', context)
->>>>>>> development
