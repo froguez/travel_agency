@@ -1,1 +1,7 @@
-
+.idea/
+static/
+__pycache__/
+media/
+venv/
+*.swp
+*.un~
