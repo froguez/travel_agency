@@ -3,7 +3,8 @@ start the app:
     script:
     - apt update
     - apt upgrade -y
-    - pip install -r /travel_agency/requirements.txt
+    - python3 -V
+    - pip install -r requirements.txt
 
     
 
