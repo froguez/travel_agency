@@ -1,0 +1,9 @@
+start the app:
+    image: froguez/travel_agency:base_django
+    script:
+    - apt update
+    - apt upgrade -y
+    - pip install -r /travel_agency/requirements.txt
+
+    
+
