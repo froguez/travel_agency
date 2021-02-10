@@ -2,7 +2,7 @@ states:
     - build
     - test
 
-build state:
+build website:
     state: build
     image: froguez/travel_agency:base_django
     script:
@@ -12,7 +12,7 @@ build state:
     - pip install -r requirements.txt
     - python3 trvgcy/manage.py runserver
     artifacts:
-        path:
+        paths:
             - ./public    
 
 test artifact:
