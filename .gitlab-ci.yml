@@ -1,4 +1,9 @@
-start the app:
+states:
+    - build
+    - test
+
+build state:
+    state: build
     image: froguez/travel_agency:base_django
     script:
     - apt update
@@ -6,5 +11,11 @@ start the app:
     - python3 -V
     - pip install -r requirements.txt
     - python3 trvgcy/manage.py runserver
-    
+    artifacts:
+        path:
+            - ./public    
 
+test artifact:
+    state: test
+    script:
+        - ls ./public  
