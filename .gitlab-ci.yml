@@ -1,7 +1,3 @@
-states:
-    - build
-    - test
-
 build website:
     state: build
     image: froguez/travel_agency:base_django
@@ -14,8 +10,3 @@ build website:
     artifacts:
         paths:
             - ./public    
-
-test artifact:
-    state: test
-    script:
-        - grep "Gatsby" ./public/index.html 
