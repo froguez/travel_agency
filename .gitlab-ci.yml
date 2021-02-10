@@ -1,4 +1,9 @@
+stages:
+    - build
+    - test
+
 build website:
+    stage: build
     image: froguez/travel_agency:base_django
     script:
     - apt update
@@ -8,4 +13,11 @@ build website:
     - python3 trvgcy/manage.py runserver
     artifacts:
         paths:
-            - ./public    
+            - ./public
+
+test CI:
+    stage: test
+    script:
+        - ls ./public
+
+
