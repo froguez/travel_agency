@@ -18,4 +18,4 @@ build website:
 test artifact:
     state: test
     script:
-        - touch ./borrame 
+        - grep "Gatsby" ./public/index.html 
