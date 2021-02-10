@@ -1,5 +1,4 @@
 build website:
-    state: build
     image: froguez/travel_agency:base_django
     script:
     - apt update
