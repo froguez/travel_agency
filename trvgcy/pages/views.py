@@ -8,6 +8,9 @@ from datetime import datetime
 from trips.models import TripTemplate, Hotel, HotelTrip
 from django.db.models import Q
 
+from rest_framework import generics
+from .serializers import UserAccountSerializer
+
 # Create your views here.
 
 def index(request):
@@ -71,3 +74,7 @@ def search(request):
         }
 
     return render(request, 'trips/search.html', context)
+
+class UserList(generics.ListAPIView):
+    queryset = UserAccount.objects.all()
+    serializer_class = UserAccountSerializer

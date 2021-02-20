@@ -17,10 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from pages import views
 
 urlpatterns = [
     path('', include('checkout.urls')),
     path('', include('trips.urls')),
     path('', include('pages.urls')),
     path('admin/', admin.site.urls),
+    path('api/users',views.UserList.as_view())
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
