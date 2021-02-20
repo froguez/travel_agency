@@ -75,6 +75,6 @@ def search(request):
 
     return render(request, 'trips/search.html', context)
 
-class UserList(generics.ListAPIView):
+class UserList(generics.ListCreateAPIView):
     queryset = UserAccount.objects.all()
     serializer_class = UserAccountSerializer
