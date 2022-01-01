@@ -82,9 +82,10 @@ DATABASES = {
        'NAME':     'travel_agency',
        'USER':     'postgres',
        'PASSWORD': 'postgres',
-#       'HOST':     '172.17.0.2',    #local
-       'HOST':     '192.168.1.249', #remote: vv
-#       'HOST':     '192.168.1.117', #remote: rpi2
+#      'HOST':     '172.17.0.2',    # local - docker
+#      'HOST':     '192.168.1.249', # remote: vv - docker
+#      'HOST':     '192.168.1.117', # remote: rpi2 - I'm not sure if docker or local.
+       'HOST':     '127.0.0.1',      # digitalOcean # Local
        'PORT':     '5432',
     }
 }
