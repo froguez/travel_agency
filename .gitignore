@@ -3,3 +3,5 @@ __pycache__/
 venv/
 *.swp
 *.un~
+trvgcy/static/
+trvgcy/trvgcy/local_settings.py
