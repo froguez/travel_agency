@@ -1,6 +1,5 @@
 .idea/
 __pycache__/
-media/
 venv/
 *.swp
 *.un~

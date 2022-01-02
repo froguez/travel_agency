@@ -24,7 +24,7 @@ SECRET_KEY = 'ue)b4w=fd9a)ww%tnr$ky2fh8)mc_w08of__ecm_+^6!g9)(78'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['80.235.55.167','127.0.0.1']
 
 # Application definition
 
@@ -83,9 +83,9 @@ DATABASES = {
        'USER':     'postgres',
        'PASSWORD': 'postgres',
 #      'HOST':     '172.17.0.2',    # local - docker
-#      'HOST':     '192.168.1.249', # remote: vv - docker
-#      'HOST':     '192.168.1.117', # remote: rpi2 - I'm not sure if docker or local.
-       'HOST':     '127.0.0.1',      # digitalOcean # Local
+       'HOST':     '192.168.1.249', # remote: vv - docker
+#      'HOST':     '192.168.1.117', # remote: rpi2 - docker
+#      'HOST':     '127.0.0.1',      # digitalOcean # Local
        'PORT':     '5432',
     }
 }
