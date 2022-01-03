@@ -1,5 +1,6 @@
 stages:
     - build
+    - analysis
     - test
 
 build website:
@@ -10,10 +11,16 @@ build website:
     - apt upgrade -y
     - python3 -V
     - pip install -r requirements.txt
-    - python3 trvgcy/manage.py runserver
+
     artifacts:
         paths:
             - ./public
+
+pep8:
+    stage: analysis
+    script:
+        pycodestyle trvgcy/pages/views.py
+
 
 test CI:
     stage: test
