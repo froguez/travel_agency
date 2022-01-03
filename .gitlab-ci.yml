@@ -1,3 +1,8 @@
+image: froguez/travel_agency:base_django
+
+before_script:
+    - python3 -V
+
 stages:
     - build
     - analysis
@@ -5,7 +10,6 @@ stages:
 
 build website:
     stage: build
-    image: froguez/travel_agency:base_django
     script:
     - apt update
     - apt upgrade -y
