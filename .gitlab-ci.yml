@@ -34,7 +34,7 @@ pep8:
         - python3 -m pip install --upgrade pip
         - pip install -r requirements.txt
         - cd Tests
-        - pycodestyle.sh
+        - ./pycodestyle.sh
         - cd ..
 
 test CI:
