@@ -33,7 +33,9 @@ pep8:
         - . venv/bin/activate
         - python3 -m pip install --upgrade pip
         - pip install -r requirements.txt
-        - pycodestyle trvgcy/pages/views.py
+        - cd Tests
+        - pycodestyle.sh
+        - cd ..
 
 test CI:
     stage: test
