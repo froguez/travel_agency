@@ -33,7 +33,7 @@ pep8:
         - . venv/bin/activate
         - python3 -m pip install --upgrade pip
         - pip install -r requirements.txt
-        - ./Tests/pycodestyle.sh
+        - ./Test_pycodestyle.sh
 
 test CI:
     stage: test
