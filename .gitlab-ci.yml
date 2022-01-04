@@ -35,9 +35,9 @@ pep8:
         - pip install -r requirements.txt
         - ./Test_pycodestyle.sh
 
-test CI:
-    stage: test
-    script:
-        - ls ./public
+# test CI:
+#    stage: test
+#    script:
+#        - ls ./public
 
 
