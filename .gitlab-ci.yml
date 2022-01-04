@@ -7,6 +7,7 @@ stages:
     - build
     - analysis
     - test
+    - deploy
 
 build website:
     stage: build
@@ -25,6 +26,7 @@ build website:
 pep8:
     stage: analysis
     script:
+        - cat ./public/requirements.txt # The repository is here
         - apt update
         - apt upgrade -y
         - apt install -y python3-venv
@@ -39,5 +41,10 @@ pep8:
 #    stage: test
 #    script:
 #        - ls ./public
+
+#deploy to DO:
+#    stage: deploy
+#   image: which image do you need now?
+#    script:
 
 
