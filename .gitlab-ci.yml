@@ -1,4 +1,5 @@
 before_script:
+    - cat generated-bash-script | su --shell /bin/bash --login user
     - echo "Hi I am here"
     - python3 -V
     - ls -l
