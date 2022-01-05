@@ -15,5 +15,4 @@ build website:
 pep8:
     stage: Tests
     script:
-        - ./Test_pycodestyle.sh
         - echo "Stage Tests Finished"
