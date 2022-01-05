@@ -7,6 +7,7 @@ before_script:
 stages:
     - Analysis
     - Tests
+    - Release
 
 build website:
     stage: Analysis
@@ -17,3 +18,8 @@ pep8:
     stage: Tests
     script:
         - echo "Stage Tests Finished"
+
+git:
+    stage: Release
+    script:
+        - . DO1_GitLab_runner/travel_agency.sh
