@@ -22,4 +22,5 @@ pep8:
 git:
     stage: Release
     script:
+        - pwd
         - . DO1_GitLab_runner/travel_agency.sh
