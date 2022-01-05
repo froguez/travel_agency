@@ -10,7 +10,8 @@ stages:
 
 build website:
     stage: Analysis
-    script: ls -l
+    script:
+        - ls -l
         - echo "Stage Analysis Finished"
 pep8:
     stage: Tests
