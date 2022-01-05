@@ -1,50 +1,18 @@
-image: froguez/travel_agency:base_django
-
 before_script:
     - python3 -V
+    - ls -l
+    - echo "Before Script Finished"
 
 stages:
-    - build
-    - analysis
-    - test
-    - deploy
+    - Analysis
+    - Tests
 
 build website:
-    stage: build
-    script:
-    - apt update
-    - apt upgrade -y
-    - apt install -y python3-venv
-    - apt install -y python3-pip
-    - python3 -m venv venv
-    - . venv/bin/activate
-    - python3 -m pip install --upgrade pip
-    - pip install -r requirements.txt
-    artifacts:
-        paths:
-            - ./public
+    stage: Analysis
+    script: ls -l
+        - echo "Stage Analysis Finished"
 pep8:
-    stage: analysis
+    stage: Tests
     script:
-        - cat ./public/requirements.txt # The repository is here
-        - apt update
-        - apt upgrade -y
-        - apt install -y python3-venv
-        - apt install -y python3-pip
-        - python3 -m venv venv
-        - . venv/bin/activate
-        - python3 -m pip install --upgrade pip
-        - pip install -r requirements.txt
         - ./Test_pycodestyle.sh
-
-# test CI:
-#    stage: test
-#    script:
-#        - ls ./public
-
-#deploy to DO:
-#    stage: deploy
-#   image: which image do you need now?
-#    script:
-
-
+        - echo "Stage Tests Finished"
