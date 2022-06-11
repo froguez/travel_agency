@@ -81,11 +81,10 @@ DATABASES = {
        'ENGINE':   'django.db.backends.postgresql_psycopg2',
        'NAME':     'travel_agency',
        'USER':     'postgres',
-       'PASSWORD': 'postgres',
+       'PASSWORD': 'superstar',
 #      'HOST':     '172.17.0.2',    # local - docker
-       'HOST':     '192.168.1.249', # remote: vv - docker
-#      'HOST':     '192.168.1.117', # remote: rpi2 - docker
-#      'HOST':     '127.0.0.1',      # digitalOcean # Local
+#      'HOST':     '192.168.1.249', # remote: vv 
+       'HOST':     '127.0.0.1',     # Local
        'PORT':     '5432',
     }
 }
